@@ -351,7 +351,9 @@ function show_img(obj) {
         }
         changeImg(index++);
     }
-    imgyuan.style.width= 25*len +"px";
+    //imgyuan.style.width= 25*len +"px";
+    imgyuan.style.width= "100%%";
+    imgyuan.style.height= 55 + "px";
     //对应圆圈和图片同步
     function changeImg(index) {
         var list = obj1.getElementsByTagName('img');
