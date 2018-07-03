@@ -41,7 +41,8 @@ class HomePage(unittest.TestCase):
         except:
             return False
 
-    def back(self,win):
+    def WinMove(self,win):
+        #窗口移动
         windows = self.driver.window_handles#获取所有窗口handle
         for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
             if current_window != win:
@@ -57,7 +58,7 @@ class HomePage(unittest.TestCase):
                 ('//div[@class="titleMain"]/ul/li[1]/div/ul/li[%d]/ul/li[%d]/a'%(elem1,i)).click()
             time.sleep(6)
 
-            self.back(window_1)
+            self.WinMove(window_1)
 
             #验证跳转的页面
             self.add_img()
@@ -72,7 +73,7 @@ class HomePage(unittest.TestCase):
             if self.isElementExist():
                 window_2 = self.driver.current_window_handle
                 self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
-                self.back(window_2)
+                self.WinMove(window_2)
                 text1 = self.driver.find_element_by_xpath('//*[@id="listcat_102"]/table[1]/tbody/tr/td[1]/span').text
                 self.assertIn(check1,text1)
                 self.add_img()
@@ -88,7 +89,7 @@ class HomePage(unittest.TestCase):
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem).click()
         time.sleep(3)
-        self.back(window_1)
+        self.WinMove(window_1)
 
         self.add_img()
         text = self.driver.find_element_by_xpath('//*[@id="container-product"]/div[1]/div[1]/table[1]/tbody/tr/td[1]/span').text
@@ -101,7 +102,7 @@ class HomePage(unittest.TestCase):
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem1).click()
         time.sleep(1)
-        self.back(window_1)
+        self.WinMove(window_1)
         self.add_img()
         text = self.driver.find_element_by_xpath(elem2).text
         self.assertIn(che,text)
@@ -110,7 +111,7 @@ class HomePage(unittest.TestCase):
         if self.isElementExist():
             window_2 = self.driver.current_window_handle
             self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
-            self.back(window_2)
+            self.WinMove(window_2)
             text1 = self.driver.find_element_by_xpath('//*[@id="listcat_103"]/table[1]/tbody/tr/td[1]/span').text
             self.assertIn(check1,text1)
             self.add_img()
@@ -223,7 +224,7 @@ class HomePage(unittest.TestCase):
         time.sleep(3)
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[2]/span').click()
-        self.back(window_1)
+        self.WinMove(window_1)
         self.add_img()
         text = self.driver.find_element_by_xpath('//*[@id="big-footer"]/div/div/div[3]/a').text
         self.assertIn(u'云集市',text)
@@ -238,7 +239,7 @@ class HomePage(unittest.TestCase):
         time.sleep(3)
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[5]/span').click()
-        self.back(window_1)
+        self.WinMove(window_1)
         self.add_img()
         text = self.driver.find_element_by_xpath('//*[@class="supportList"]/h5/a').text
         self.assertIn(u'营销',text)
