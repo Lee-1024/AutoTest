@@ -41,6 +41,12 @@ class HomePage(unittest.TestCase):
         except:
             return False
 
+    def back(self,win):
+        windows = self.driver.window_handles#获取所有窗口handle
+        for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
+            if current_window != win:
+                self.driver.switch_to.window(current_window)
+
     def step(self,elem1,checks,check1=None):
         """操作步骤"""
         for i in range(1,len(checks)+1):
@@ -50,10 +56,9 @@ class HomePage(unittest.TestCase):
             self.driver.find_element_by_xpath\
                 ('//div[@class="titleMain"]/ul/li[1]/div/ul/li[%d]/ul/li[%d]/a'%(elem1,i)).click()
             time.sleep(6)
-            windows = self.driver.window_handles#获取所有窗口handle
-            for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
-                if current_window != window_1:
-                    self.driver.switch_to.window(current_window)
+
+            self.back(window_1)
+
             #验证跳转的页面
             self.add_img()
             time.sleep(2)
@@ -67,10 +72,7 @@ class HomePage(unittest.TestCase):
             if self.isElementExist():
                 window_2 = self.driver.current_window_handle
                 self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
-                windows = self.driver.window_handles#获取所有窗口handle
-                for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
-                    if current_window != window_2:
-                        self.driver.switch_to.window(current_window)
+                self.back(window_2)
                 text1 = self.driver.find_element_by_xpath('//*[@id="listcat_102"]/table[1]/tbody/tr/td[1]/span').text
                 self.assertIn(check1,text1)
                 self.add_img()
@@ -86,10 +88,7 @@ class HomePage(unittest.TestCase):
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem).click()
         time.sleep(3)
-        windows = self.driver.window_handles#获取所有窗口handle
-        for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
-            if current_window != window_1:
-                self.driver.switch_to.window(current_window)
+        self.back(window_1)
 
         self.add_img()
         text = self.driver.find_element_by_xpath('//*[@id="container-product"]/div[1]/div[1]/table[1]/tbody/tr/td[1]/span').text
@@ -102,10 +101,7 @@ class HomePage(unittest.TestCase):
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem1).click()
         time.sleep(1)
-        windows = self.driver.window_handles#获取所有窗口handle
-        for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
-            if current_window != window_1:
-                self.driver.switch_to.window(current_window)
+        self.back(window_1)
         self.add_img()
         text = self.driver.find_element_by_xpath(elem2).text
         self.assertIn(che,text)
@@ -114,10 +110,7 @@ class HomePage(unittest.TestCase):
         if self.isElementExist():
             window_2 = self.driver.current_window_handle
             self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
-            windows = self.driver.window_handles#获取所有窗口handle
-            for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
-                if current_window != window_2:
-                    self.driver.switch_to.window(current_window)
+            self.back(window_2)
             text1 = self.driver.find_element_by_xpath('//*[@id="listcat_103"]/table[1]/tbody/tr/td[1]/span').text
             self.assertIn(check1,text1)
             self.add_img()
@@ -129,7 +122,7 @@ class HomePage(unittest.TestCase):
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
-    def cloudService(self):
+    def _cloudService(self):
         u"""云服务"""
         self.driver.get(self.base_url)
         self.driver.maximize_window()
@@ -179,7 +172,7 @@ class HomePage(unittest.TestCase):
         self.step(14,checks)
 
 
-    def test_office(self):
+    def _office(self):
         u"""通用办公类别中的选项验证"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
@@ -221,6 +214,45 @@ class HomePage(unittest.TestCase):
         self.hover()
         #点击法大大
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[12]/a','//*[@class="productTitle"]/strong',u'电子合同')
+
+    def _procurement(self):
+        u"""一站式采购验证"""
+        self.driver.get(self.base_url)
+        self.driver.implicitly_wait(30)
+        self.driver.maximize_window()
+        time.sleep(3)
+        window_1 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[2]/span').click()
+        self.back(window_1)
+        self.add_img()
+        text = self.driver.find_element_by_xpath('//*[@id="big-footer"]/div/div/div[3]/a').text
+        self.assertIn(u'云集市',text)
+        self.driver.close()
+        self.driver.switch_to.window(window_1)
+
+    def _support(self):
+        u"""支持"""
+        self.driver.get(self.base_url)
+        self.driver.implicitly_wait(30)
+        self.driver.maximize_window()
+        time.sleep(3)
+        window_1 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[5]/span').click()
+        self.back(window_1)
+        self.add_img()
+        text = self.driver.find_element_by_xpath('//*[@class="supportList"]/h5/a').text
+        self.assertIn(u'营销',text)
+
+        texts = [u'营销',u'推荐',u'付款',u'佣金',u'配置',u'查看',u'链接',u'报告']
+        #循环点击内容
+        for i in range(1, 9):
+            pa = '//*[@class="vc_column-inner "]/div/div/div/section/div/div/div[%d]/h5/a'%i
+            self.driver.find_element_by_xpath(pa).click()
+            time.sleep(2)
+            text =self.driver.find_element_by_xpath('//*[@class="vc_column-inner "]/div/div/div/section/div/h4').text
+            self.assertIn(texts[i-1],text)
+            self.add_img()
+            self.driver.back()
 
 
 
