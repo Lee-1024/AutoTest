@@ -7,8 +7,15 @@ import time,datetime
 
 class HomePage(unittest.TestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        cls.driver = webdriver.Chrome()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
     def setUp(self):
-        self.driver = webdriver.Chrome()
         self.base_url = 'https://community.stg.hnacloudmarket.com/'
         self.imgs = []
 
@@ -123,52 +130,97 @@ class HomePage(unittest.TestCase):
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
-    def _cloudService(self):
-        u"""云服务"""
+
+    def test_acloudComputing(self):
+        u"""云计算类别中的选项验证"""
         self.driver.get(self.base_url)
         self.driver.maximize_window()
-
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
-
-        #云计算
         checks = ('ECS',u'华为',u'金山',u'华云',u'创业',u'CVM')
         self.step(1,checks,check1=u'金山')
-        #超算与超融合
+    def test_bsuperComputing(self):
+        u"""超算与超融合类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'并行',u'OITS',u'应用',u'一体机')
         self.step(2,checks)
-        #大数据基础设施
+    def test_cbaseInstallation(self):
+        u"""大数据基础设置类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'KMR',)
         self.step(3,checks)
-        #云网络
+    def test_dcloudNetwork(self):
+        u"""云网络类别中选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'SLB',u'IP',u'CDN')
         self.step(4,checks,check1=u'金山')
-        #云存储
+    def test_ecloudStorage(self):
+        u"""云存储类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = ('OSS','KS3','COS')
         self.step(5,checks)
-        # #财务人事
+    def test_ffinancial(self):
+        u"""财务人事类别中的选项验证"""
+        # self.driver.get(self.base_url)
+        # self.driver.maximize_window()
+        # self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         # checks = (u'英盛',u'通')
         # self.step(6,checks)
-        #互联网中间件
+    def test_ginternetMiddleware(self):
+        u"""互联网中间件类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'金融云',u'风险')
         self.step(7,checks)
-        #通信产品
+    def test_hcommunicationProducts(self):
+        u"""通信产品类别中选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'科天',u'环信',u'与真')
         self.step(8,checks)
-        #安全服务
+    def test_isecurityService(self):
+        u"""安全服务类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'安全评估',u'公安备案',u'自助扫描',u'安全监测',u'安全防护',u'堡垒',u'防火墙',u'意识评估',u'身份核验',u'防攻击',
         u'Symantec',u'GlobalSign',u'CFCA',u'GeoTrust',u'TrustAsia',u'景安云信')
         self.step(9,checks)
-        #关系型数据库
+    def test_jdataBase(self):
+        u"""关系型数据库类别中选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'RDS',u'KRDS',u'CDB')
         self.step(10,checks)
-        #大数据与AI
+    def test_khadoop(self):
+        u"""大数据类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'拓尔思',u'博雅',u'军犬',u'互动云',u'智能')
         self.step(11,checks)
-        #迁移与云管理
+    def test_lcloudManagement(self):
+        u"""迁移与云管理类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'华云数据',u'CAN',u'VM',u'云首')
         self.step(12,checks)
-
-        #监控服务
+    def test_mmonitoringService(self):
+        u"""监控服务类别中的选项验证"""
+        self.driver.get(self.base_url)
+        self.driver.maximize_window()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'Smonitor',u'监控宝')
         self.step(14,checks)
 
@@ -216,7 +268,7 @@ class HomePage(unittest.TestCase):
         #点击法大大
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[12]/a','//*[@class="productTitle"]/strong',u'电子合同')
 
-    def _procurement(self):
+    def test_zprocurement(self):
         u"""一站式采购验证"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
@@ -231,7 +283,7 @@ class HomePage(unittest.TestCase):
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
-    def _support(self):
+    def test_zsupport(self):
         u"""支持"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
@@ -255,7 +307,7 @@ class HomePage(unittest.TestCase):
             self.add_img()
             self.driver.back()
 
-    def _partner(self):
+    def test_zpartner(self):
         u"""成为合作伙伴"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
@@ -293,5 +345,5 @@ class HomePage(unittest.TestCase):
         self.driver.switch_to.window(window_1)#移动到第一窗口
 
 
-    def tearDown(self):
-        self.driver.quit()
+if __name__ == '__main__':
+    unittest.main()
