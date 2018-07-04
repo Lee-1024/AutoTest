@@ -117,9 +117,9 @@ class HomePage(unittest.TestCase):
             self.add_img()
             self.driver.close()
             self.driver.switch_to.window(window_2)
-        print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
+        #print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
         self.supportLinkButton()
-        print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
+        #print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
@@ -173,46 +173,46 @@ class HomePage(unittest.TestCase):
         self.step(14,checks)
 
 
-    def _office(self):
+    def test_office(self):
         u"""通用办公类别中的选项验证"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         time.sleep(4)
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击Office365
         self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[1]/a','OFFICE')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击WPS+云办公
         self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[2]/a','WPS')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击编++
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[3]/a','//*[@class="productTitle"]/strong',u'编')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击由你飞
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[4]/a','//*[@class="productTitle"]/strong',u'Unify')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击云势软件客户关系管理系统
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[5]/a','//*[@class="productTitle"]/strong',u'客户关系')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击云势软件架构指标管理系统
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[6]/a','//*[@class="productTitle"]/strong',u'架构指标')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击云势软件奖金返利管理系统
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[7]/a','//*[@class="productTitle"]/strong',u'奖金返利')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #ProcessOn
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[8]/a','//*[@class="productTitle"]/strong',u'essOn')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击今目标
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[9]/a','//*[@class="productTitle"]/strong',u'目标',check1=u'今目标')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击PGS航旅电子客票平台
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[10]/a','//*[@class="productTitle"]/strong',u'PGS')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击服网云桌面解决方案
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[11]/a','//*[@class="productTitle"]/strong',u'服网云')
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         #点击法大大
         self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[13]/ul/li[12]/a','//*[@class="productTitle"]/strong',u'电子合同')
 
@@ -255,7 +255,7 @@ class HomePage(unittest.TestCase):
             self.add_img()
             self.driver.back()
 
-    def test_partner(self):
+    def _partner(self):
         u"""成为合作伙伴"""
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(30)
