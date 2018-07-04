@@ -17,9 +17,9 @@ class HomePage(unittest.TestCase):
         self.imgs.append(self.driver.get_screenshot_as_base64())
         return True
 
-    def hover(self):
+    def hover(self,elem):
         #悬停
-        elem = self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[1]/span')
+        elem = self.driver.find_element_by_xpath(elem)
         ActionChains(self.driver).move_to_element(elem).perform()
 
     def supportLinkButton(self):
@@ -82,7 +82,7 @@ class HomePage(unittest.TestCase):
 
             self.driver.close()#关闭新打开的页面
             self.driver.switch_to.window(window_1)#移动到原来页面
-            self.hover()
+            self.hover('//div[@class="titleMain"]/ul/li[1]/span')
 
     def office_ex(self,elem,che):
         #office特例使用方法
@@ -128,7 +128,7 @@ class HomePage(unittest.TestCase):
         self.driver.get(self.base_url)
         self.driver.maximize_window()
 
-        self.hover()
+        self.hover('//div[@class="titleMain"]/ul/li[1]/span')
 
         #云计算
         checks = ('ECS',u'华为',u'金山',u'华云',u'创业',u'CVM')
@@ -255,6 +255,42 @@ class HomePage(unittest.TestCase):
             self.add_img()
             self.driver.back()
 
+    def test_partner(self):
+        u"""成为合作伙伴"""
+        self.driver.get(self.base_url)
+        self.driver.implicitly_wait(30)
+        self.driver.maximize_window()
+        time.sleep(2)
+        self.hover('//div[@class="titleMain"]/ul/li[4]/span')
+        #代理商
+        window_1 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()
+        self.WinMove(window_1)
+        window_2 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击申请
+        self.WinMove(window_2)
+        self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
+        text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
+        self.assertIn(u'必填',text)
+        self.driver.close()
+        self.driver.switch_to.window(window_2)#移动到第二窗口
+        self.driver.close()
+        self.driver.switch_to.window(window_1)#移动到第一窗口
+        #加盟
+        self.hover('//div[@class="titleMain"]/ul/li[4]/span')
+        window_1 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
+        self.WinMove(window_1)
+        window_2 = self.driver.current_window_handle
+        self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击联系我们
+        self.WinMove(window_2)
+        self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
+        text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
+        self.assertIn(u'必填',text)
+        self.driver.close()
+        self.driver.switch_to.window(window_2)#移动到第二窗口
+        self.driver.close()
+        self.driver.switch_to.window(window_1)#移动到第一窗口
 
 
     def tearDown(self):
