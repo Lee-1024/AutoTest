@@ -1,7 +1,8 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'Lee'
 import unittest
-from debug_doc import HTMLTestRunner5
+#from debug_doc import HTMLTestRunner5
+import HTMLTestRunner5
 import time
 
 from testCase import Blog, PersonalCenter
