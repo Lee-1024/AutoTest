@@ -81,7 +81,7 @@ class HomePage(unittest.TestCase):
                 window_2 = self.driver.current_window_handle
                 self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
                 self.WinMove(window_2)
-                text1 = self.driver.find_element_by_xpath('//*[@id="listcat_102"]/table[1]/tbody/tr/td[1]/span').text
+                text1 = self.driver.find_element_by_class_name('BlockName').text
                 self.assertIn(check1,text1)
                 self.add_img()
                 self.driver.close()
@@ -119,7 +119,7 @@ class HomePage(unittest.TestCase):
             window_2 = self.driver.current_window_handle
             self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
             self.WinMove(window_2)
-            text1 = self.driver.find_element_by_xpath('//*[@id="listcat_103"]/table[1]/tbody/tr/td[1]/span').text
+            text1 = self.driver.find_element_by_class_name('BlockName').text
             self.assertIn(check1,text1)
             self.add_img()
             self.driver.close()
@@ -193,7 +193,7 @@ class HomePage(unittest.TestCase):
         self.driver.maximize_window()
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
         checks = (u'安全评估',u'公安备案',u'自助扫描',u'安全监测',u'安全防护',u'堡垒',u'防火墙',u'意识评估',u'身份核验',u'防攻击',
-        u'Symantec',u'GlobalSign',u'CFCA',u'GeoTrust',u'TrustAsia',u'景安云信')
+        u'Symantec',u'GlobalSign',u'CFCA',u'GeoTrust',u'TrustAsia',u'景安云信',u'CChelper')
         self.step(9,checks)
     def test_jdataBase(self):
         u"""关系型数据库类别中选项验证"""
@@ -203,11 +203,11 @@ class HomePage(unittest.TestCase):
         checks = (u'RDS',u'KRDS',u'CDB')
         self.step(10,checks)
     def test_khadoop(self):
-        u"""大数据类别中的选项验证"""
+        u"""大数据与AI类别中的选项验证"""
         self.driver.get(self.base_url)
         self.driver.maximize_window()
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
-        checks = (u'拓尔思',u'博雅',u'军犬',u'互动云',u'智能')
+        checks = (u'拓尔思',u'博雅',u'军犬',u'互动云',u'智能',u'彩虹')
         self.step(11,checks)
     def test_lcloudManagement(self):
         u"""迁移与云管理类别中的选项验证"""
@@ -221,7 +221,7 @@ class HomePage(unittest.TestCase):
         self.driver.get(self.base_url)
         self.driver.maximize_window()
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
-        checks = (u'Smonitor',u'监控宝')
+        checks = (u'Smonitor',u'监控宝',u'Insight','Browser','Mobile','OneAlert')
         self.step(14,checks)
 
 

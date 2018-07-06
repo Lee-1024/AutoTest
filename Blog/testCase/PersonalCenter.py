@@ -24,8 +24,8 @@ class PersonalCenter(unittest.TestCase):
         return True
 
     def hover(self):
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/div[1]/img').click()
-        ele = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/div/img')
+        self.driver.find_element_by_xpath('//div[@class="titleUserPic"]/img').click()
+        ele = self.driver.find_element_by_xpath('//div[@class="titleUserPic"]/img')
         time.sleep(2)
         ActionChains(self.driver).move_to_element(ele).perform()
         time.sleep(2)
@@ -39,7 +39,7 @@ class PersonalCenter(unittest.TestCase):
         login = LogiAndExit()
         login.login(self.driver,'17600591024','123456')
         time.sleep(1)
-        firsrn = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/div[2]').text
+        firsrn = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]/div[2]').text
         self.assertIn('HNA',firsrn)
 
         time.sleep(2)
@@ -56,7 +56,8 @@ class PersonalCenter(unittest.TestCase):
         #modified data
         self.driver.find_element_by_class_name('ant-btn').click()
         num = random.randint(100,2000)
-        nickname = 'HNA-'+str(uuid.uuid1())[0:21]
+        nickname = 'HNA-'+str(uuid.uuid1())[0:11]
+        time.sleep(3)
         self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[2]/div[2]/input').clear()
         self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[2]/div[2]/input').send_keys(nickname)
         self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[2]/div[2]/button').click()

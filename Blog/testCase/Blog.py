@@ -27,30 +27,32 @@ class PublishBlog(unittest.TestCase):
         self.driver.maximize_window()
         time.sleep(3)
         self.add_img()
+        #点击博客
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[3]/span').click()
         #index click
-        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[1]/div[2]/div/div[1]').text
+        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[1]').text
         self.assertIn('nginx', text)
-        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[8]').text
+        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[3]/div[2]/div/div[8]').text
         self.assertIn('O2O',text)
         time.sleep(1)
         #login
         login = LogiAndExit()
-        login.login(self.driver,'15044495530','l123456')
+        login.login(self.driver,'15044495530','l12345')
 
         time.sleep(1)
-        text = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/div[2]').text
+        text = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]/div[2]').text
         self.assertIn('T',text)
 
-        #blog
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]').click()
-        #click nginx
+        #点击标签筛选
+        #点击 nginx
         self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[1]').click()
-        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[1]').text
-        self.assertIn('nginx',text)
-        #click O2O
+        # text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[1]').text
+        # self.assertIn('nginx',text)
+        #点击 O2O
         self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[3]/div[2]/div/div[8]').click()
-        text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[3]/div[2]/div/div[8]').text
-        self.assertIn('O2O',text)
+        # text = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[3]/div[2]/div/div[8]').text
+        # self.assertIn('O2O',text)
+        time.sleep(1)
         self.add_img()
         self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[1]/div/button[1]').click()
         self.add_img()
