@@ -322,9 +322,10 @@ class HomePage(unittest.TestCase):
         self.driver.maximize_window()
         time.sleep(2)
         self.hover('//div[@class="titleMain"]/ul/li[4]/span')
+        time.sleep(1)
         #代理商
         window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/div/ul/li[1]/ul/li/a').click()
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()
         self.WinMove(window_1)
         window_2 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击申请
@@ -338,8 +339,9 @@ class HomePage(unittest.TestCase):
         self.driver.switch_to.window(window_1)#移动到第一窗口
         #加盟
         self.hover('//div[@class="titleMain"]/ul/li[4]/span')
+        time.sleep(1)
         window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/div/ul/li[2]/ul/li/a').click()
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
         self.WinMove(window_1)
         window_2 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击联系我们

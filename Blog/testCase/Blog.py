@@ -39,8 +39,8 @@ class PublishBlog(unittest.TestCase):
         login = LogiAndExit()
         login.login(self.driver,'15044495530','l12345')
 
-        time.sleep(1)
-        text = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]/div[2]').text
+        time.sleep(5)
+        text = self.driver.find_element_by_xpath('//div[@class="titleUserBtn clickable "]').text
         self.assertIn('T',text)
 
         #点击标签筛选

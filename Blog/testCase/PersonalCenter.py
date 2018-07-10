@@ -38,8 +38,8 @@ class PersonalCenter(unittest.TestCase):
         #login
         login = LogiAndExit()
         login.login(self.driver,'17600591024','123456')
-        time.sleep(1)
-        firsrn = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]/div[2]').text
+        time.sleep(5)
+        firsrn = self.driver.find_element_by_xpath('//div[@class="titleUserBtn clickable "]').text
         self.assertIn('HNA',firsrn)
 
         time.sleep(2)

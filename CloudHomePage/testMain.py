@@ -18,7 +18,7 @@ testunit.addTest(unittest.makeSuite(HomePage.HomePage))
 filepath = "D:\\AutoTest\\CloudHomePage\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
 #定义测试报告
-runner = HTMLTestRunner5.HTMLTestRunner(title="测试报告", description="主流程测试报告", stream=fp, verbosity=2, retry=1, save_last_try=True)
+runner = HTMLTestRunner5.HTMLTestRunner(title="主页测试报告", description="主页链接跳转测试", stream=fp, verbosity=2, retry=1, save_last_try=True)
 
 #执行用例
 runner.run(testunit)

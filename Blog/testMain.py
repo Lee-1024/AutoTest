@@ -19,7 +19,7 @@ testunit.addTest(unittest.makeSuite(PersonalCenter.PersonalCenter))
 filepath = "D:\\AutoTest\\Blog\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
 #定义测试报告
-runner = HTMLTestRunner5.HTMLTestRunner(title="测试报告", description="主流程测试报告", stream=fp, verbosity=2, retry=1, save_last_try=True)
+runner = HTMLTestRunner5.HTMLTestRunner(title="博客与个人中心测试报告", description="主流程测试报告", stream=fp, verbosity=2, retry=1, save_last_try=True)
 
 #执行用例
 runner.run(testunit)
