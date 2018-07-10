@@ -8,6 +8,7 @@ class LogiAndExit():
     def login(self,driver,moblie,code):
         driver.find_element_by_xpath('//div[@class="titleUserBtnGroup"]/div[1]').click()
         driver.find_element_by_xpath('//div[@class="login-modal-main-inputs"]/span[1]/input').send_keys(moblie)
+        time.sleep(1)
         driver.find_element_by_xpath('//div[@class="login-modal-main-inputs"]/span[2]/input').send_keys(code)
         driver.find_element_by_xpath('//div[@class="login-modal-main-btns"]/button').click()
 

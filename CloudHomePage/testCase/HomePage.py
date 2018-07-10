@@ -16,7 +16,8 @@ class HomePage(unittest.TestCase):
         cls.driver.quit()
 
     def setUp(self):
-        self.base_url = 'https://community.stg.hnacloudmarket.com/'
+        self.base_url = 'https://stg.hnacloudmarket.com/'
+        #self.base_url = 'https://10.125.1.240/'
         self.imgs = []
 
     def add_img(self):
@@ -323,7 +324,7 @@ class HomePage(unittest.TestCase):
         self.hover('//div[@class="titleMain"]/ul/li[4]/span')
         #代理商
         window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/div/ul/li[1]/ul/li/a').click()
         self.WinMove(window_1)
         window_2 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击申请
@@ -338,7 +339,7 @@ class HomePage(unittest.TestCase):
         #加盟
         self.hover('//div[@class="titleMain"]/ul/li[4]/span')
         window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/div/ul/li[2]/ul/li/a').click()
         self.WinMove(window_1)
         window_2 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击联系我们
