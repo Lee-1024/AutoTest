@@ -26,6 +26,7 @@ class PublishBlog(unittest.TestCase):
         self.driver.get(self.base_url)
         self.driver.maximize_window()
         time.sleep(3)
+        self.driver.find_element_by_class_name('apsClose').click()
         self.add_img()
         #点击博客
         self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[3]/span').click()

@@ -35,6 +35,7 @@ class PersonalCenter(unittest.TestCase):
         u"""personalcenter"""
         self.driver.get(self.base_url)
         self.driver.maximize_window()
+        self.driver.find_element_by_class_name('apsClose').click()
         #login
         login = LogiAndExit()
         login.login(self.driver,'17600591024','123456')
