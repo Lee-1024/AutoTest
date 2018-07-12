@@ -2,7 +2,7 @@
 __author__ = 'Lee'
 from selenium import webdriver
 import unittest
-import time
+import time,random
 from Common import LogiAndExit
 
 class PublishBlog(unittest.TestCase):
@@ -85,9 +85,23 @@ class PublishBlog(unittest.TestCase):
         self.driver.find_element_by_class_name('DraftEditor-root').click()
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div').send_keys(content)
-        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[3]/div[2]/div/div[1]').click()
-        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[4]/div[2]/div/div[1]').click()
-        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[5]/div[2]/div/div[1]').click()
+        # self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[3]/div[2]/div/div[1]').click()
+        # self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[4]/div[2]/div/div[1]').click()
+        # self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[5]/div[2]/div/div[1]').click()
+
+        #创建一个随机数
+        index = random.randint(1,11)
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[3]/div[2]/div/div[6]').click()#展开
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[3]/div[2]/div/div[%d]'%index).click()
+        #创建一个随机数
+        index = random.randint(1,30)
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[4]/div[2]/div/div[6]').click()#展开
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[4]/div[2]/div/div[%d]'%index).click()
+        #创建一个随机数
+        index = random.randint(1,25)
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[5]/div[2]/div/div[6]').click()#展开
+        self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[5]/div[2]/div/div[%d]'%index).click()
+
         self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[9]/div[2]/div/input').send_keys('0000')
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[11]/div[2]/div/button').click()
