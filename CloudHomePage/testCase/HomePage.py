@@ -16,8 +16,8 @@ class HomePage(unittest.TestCase):
         cls.driver.quit()
 
     def setUp(self):
-        #self.base_url = 'https://stg.hnacloudmarket.com/'
-        self.base_url = 'https://hnacloudmarket.com/'
+        self.base_url = 'https://stg.hnacloudmarket.com/'
+        #self.base_url = 'https://hnacloudmarket.com/'
         self.imgs = []
 
     def add_img(self):
