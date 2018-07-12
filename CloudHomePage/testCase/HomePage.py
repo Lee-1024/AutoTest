@@ -178,7 +178,7 @@ class HomePage(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
-        checks = (u'英盛',u'通')
+        checks = (u'英盛',u'通',u'简税')
         self.step(6,checks)
     def test_ginternetMiddleware(self):
         u"""互联网中间件类别中的选项验证"""
@@ -194,7 +194,7 @@ class HomePage(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
         self.hover('//div[@class="titleMain"]/ul/li[1]/span')
-        checks = (u'科天',u'环信',u'与真')
+        checks = (u'科天',u'环信',u'与真',u'云点播',u'A2A',u'会畅通','400',u'融云')
         self.step(8,checks)
     def test_isecurityService(self):
         u"""安全服务类别中的选项验证"""
