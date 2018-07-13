@@ -13,6 +13,7 @@ class LogiAndExit():
         driver.find_element_by_xpath('//div[@class="login-modal-main-btns"]/button').click()
 
     def exit(self,driver):
+        driver.find_element_by_class_name('titleMain').click()
         driver.find_element_by_xpath('//div[@class="titleUserPic"]/img').click()
         ele = driver.find_element_by_xpath('//div[@class="titleUserPic"]/img')
         ActionChains(driver).move_to_element(ele).perform()
