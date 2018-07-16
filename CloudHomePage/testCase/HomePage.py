@@ -349,6 +349,7 @@ class HomePage(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击申请
         self.WinMove(window_2)
         self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
+        self.add_img()
         text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
         self.assertIn(u'必填',text)
         self.driver.close()
@@ -365,6 +366,7 @@ class HomePage(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击联系我们
         self.WinMove(window_2)
         self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
+        self.add_img()
         text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
         self.assertIn(u'必填',text)
         self.driver.close()
