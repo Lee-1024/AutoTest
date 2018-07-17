@@ -114,7 +114,7 @@ class HomePage(unittest.TestCase):
         self.add_img()
         text = self.driver.find_element_by_xpath(elem2).text
         self.assertIn(che,text)
-        time_stamp = datetime.datetime.now()
+        #time_stamp = datetime.datetime.now()
 
         if self.isElementExist():
             window_2 = self.driver.current_window_handle
