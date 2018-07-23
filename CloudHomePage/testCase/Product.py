@@ -4,7 +4,7 @@ from selenium import webdriver
 import unittest,time
 from Common import CommonMethod
 
-class Shopping(unittest.TestCase):
+class Product(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
