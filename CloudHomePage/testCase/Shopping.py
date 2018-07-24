@@ -25,6 +25,10 @@ class Shopping(unittest.TestCase):
         return True
 
     def step(self,check):
+        """
+        :param check: 检查点列表，传入列表或元组
+        :return: 一站式购买中产品方法，无返回值
+        """
         for i in range(1,len(check)+1):
             window_2 = self.driver.current_window_handle
             self.driver.find_element_by_xpath('//div[@class="shopping"]/div[2]/div[%d]/div/img'%i).click()

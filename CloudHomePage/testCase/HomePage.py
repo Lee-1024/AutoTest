@@ -37,7 +37,12 @@ class HomePage(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="contactForm"]/div/span').click()
 
     def step(self,elem1,checks,check1=None):
-        """操作步骤"""
+        """
+        :param elem1: 大类别的位置
+        :param checks: 点击后检查点列表，传入列表或元组
+        :param check1: 点击购买后的检查点，如果没有购买按钮则无需传入
+        :return: 操作步骤方法 无返回值
+        """
         for i in range(1,len(checks)+1):
             #print len(checks)
             window_1 = self.driver.current_window_handle#获取当前窗口handle
@@ -86,7 +91,11 @@ class HomePage(unittest.TestCase):
             comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
 
     def office_ex(self,elem,che):
-        #office特例使用方法
+        """
+        :param elem:下拉列表中元素位置XPATH
+        :param che:点击后检查点
+        :return:通用办公特殊项方法 无返回值
+        """
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem).click()
         time.sleep(3)
@@ -99,7 +108,13 @@ class HomePage(unittest.TestCase):
         self.driver.switch_to.window(window_1)
 
     def office_com(self,elem1,elem2,che,check1=None):
-        #office中通用的方法
+        """
+        :param elem1: 下拉列表中元素位置XPATH
+        :param elem2: 点击后检查点位置XPATH
+        :param che: 点击后检查点
+        :param check1: 点击购买后检查点
+        :return: 通用办公通用方法 无返回值
+        """
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath(elem1).click()
         time.sleep(1)

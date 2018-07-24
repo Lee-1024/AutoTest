@@ -26,7 +26,12 @@ class Product(unittest.TestCase):
         return True
 
     def step(self,ele1,ele2,ele3):
-
+        """
+        :param ele1: 元素在第几行
+        :param ele2: 元素是该行的第几个
+        :param ele3: 点击该行一个元素后，下面有几个点击项
+        :return: 云产品区操作方法，无返回值
+        """
         self.driver.find_element_by_xpath('//div[@class="product-introduction"]/div[%d]/div/div[%d]'%(ele1+1,ele2)).click()
         time.sleep(2)
         for i in range(1,ele3+1):
