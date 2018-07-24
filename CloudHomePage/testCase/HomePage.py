@@ -16,8 +16,6 @@ class HomePage(unittest.TestCase):
         cls.driver.quit()
 
     def setUp(self):
-        self.base_url = 'https://stg.hnacloudmarket.com/'
-        #self.base_url = 'https://www.hnacloudmarket.com/'
         self.imgs = []
         self.comme = CommonMethod()
 
@@ -25,6 +23,11 @@ class HomePage(unittest.TestCase):
         #截图添加到测试报告中的方法
         self.imgs.append(self.driver.get_screenshot_as_base64())
         return True
+
+    def setup_get(self):
+        self.driver.get(self.comme.url)
+        self.driver.maximize_window()
+        self.driver.find_element_by_class_name('apsClose').click()
 
     def supportLinkButton(self):
         #点击联系我
@@ -143,114 +146,86 @@ class HomePage(unittest.TestCase):
 
     def test_acloudComputing(self):
         u"""云计算类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = ('ECS',u'华为',u'金山',u'华云',u'创业',u'CVM')
         self.step(1,checks,check1=u'金山')
     def test_bsuperComputing(self):
         u"""超算与超融合类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'并行',u'OITS',u'应用',u'一体机')
         self.step(2,checks)
     def test_cbaseInstallation(self):
         u"""大数据基础设置类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'KMR',)
         self.step(3,checks)
     def test_dcloudNetwork(self):
         u"""云网络类别中选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'SLB',u'IP',u'CDN')
         self.step(4,checks,check1=u'金山')
     def test_ecloudStorage(self):
         u"""云存储类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = ('OSS','KS3','COS')
         self.step(5,checks)
     def test_ffinancial(self):
         u"""财务人事类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'英盛',u'通',u'简税')
         self.step(6,checks)
     def test_ginternetMiddleware(self):
         u"""互联网中间件类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'金融云',u'风险')
         self.step(7,checks)
     def test_hcommunicationProducts(self):
         u"""通信产品类别中选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'科天',u'环信',u'与真',u'云点播',u'A2A',u'会畅通','400',u'融云')
         self.step(8,checks)
     def test_isecurityService(self):
         u"""安全服务类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'安全评估',u'公安备案',u'自助扫描',u'安全监测',u'安全防护',u'堡垒',u'防火墙',u'意识评估',u'身份核验',u'防攻击',
         u'Symantec',u'GlobalSign',u'CFCA',u'GeoTrust',u'TrustAsia',u'景安云信',u'CChelper')
         self.step(9,checks,check1=u'绿盟')
     def test_jdataBase(self):
         u"""关系型数据库类别中选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'RDS',u'KRDS',u'CDB')
         self.step(10,checks)
     def test_khadoop(self):
         u"""大数据与AI类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'拓尔思',u'博雅',u'军犬',u'互动云',u'智能',u'彩虹')
         self.step(11,checks)
     def test_lcloudManagement(self):
         u"""迁移与云管理类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'华云数据',u'CAN',u'VM',u'云首')
         self.step(12,checks)
     def test_mpaas(self):
         u"""Paas"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'AWS',)
         self.step(13,checks)
     def test_mmonitoringService(self):
         u"""监控服务类别中的选项验证"""
-        self.driver.get(self.base_url)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
+        self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'Smonitor',u'监控宝',u'Insight','Browser','Mobile','OneAlert')
         self.step(15,checks)
@@ -258,7 +233,7 @@ class HomePage(unittest.TestCase):
 
     def test_office(self):
         u"""通用办公类别中的选项验证"""
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         time.sleep(4)
@@ -302,7 +277,7 @@ class HomePage(unittest.TestCase):
 
     def test_zprocurement(self):
         u"""一站式采购验证"""
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         time.sleep(3)
@@ -319,7 +294,7 @@ class HomePage(unittest.TestCase):
 
     def test_zsupport(self):
         u"""支持"""
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
@@ -345,7 +320,7 @@ class HomePage(unittest.TestCase):
 
     def test_zpartner(self):
         u"""成为合作伙伴"""
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         time.sleep(2)

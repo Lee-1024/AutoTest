@@ -3,6 +3,10 @@ __author__ = 'Lee'
 from selenium.webdriver.common.action_chains import ActionChains
 class CommonMethod():
 
+    def __init__(self):
+
+        self.url = 'https://stg.hnacloudmarket.com/'
+
     def isElementExist(self,xp,driver):
         """
         :param xp: 元素位置XPATH

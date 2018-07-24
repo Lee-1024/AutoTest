@@ -15,8 +15,6 @@ class Product(unittest.TestCase):
         cls.driver.quit()
 
     def setUp(self):
-        self.base_url = 'https://stg.hnacloudmarket.com/'
-        #self.base_url = 'https://www.hnacloudmarket.com/'
         self.imgs = []
         self.comme = CommonMethod()
 
@@ -45,7 +43,7 @@ class Product(unittest.TestCase):
 
     def test_Product_1(self):
 
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
         #IaaS
@@ -68,7 +66,7 @@ class Product(unittest.TestCase):
 
     def test_Product_2(self):
 
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
 

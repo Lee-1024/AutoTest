@@ -15,9 +15,8 @@ class Shopping(unittest.TestCase):
         cls.driver.quit()
 
     def setUp(self):
-        self.base_url = 'https://stg.hnacloudmarket.com/'
-        #self.base_url = 'https://www.hnacloudmarket.com/'
         self.imgs = []
+        self.comme = CommonMethod()
 
     def add_img(self):
         #截图添加到测试报告中的方法
@@ -43,7 +42,7 @@ class Shopping(unittest.TestCase):
 
     def test_shopping(self):
 
-        self.driver.get(self.base_url)
+        self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
         checklist = [u'365',u'WPS',u'金山',u'今目标']
