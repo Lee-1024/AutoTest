@@ -128,6 +128,8 @@ class TitleSpan(unittest.TestCase):
         self.assertIn(che,text)
         #time_stamp = datetime.datetime.now()
 
+        self.supportLinkButton()
+
         if  comme.isElementExist('//div[@class="container"]/div/div[5]/div[2]/p[2]/a',self.driver):
             window_2 = self.driver.current_window_handle
             self.driver.find_element_by_xpath('//div[@class="container"]/div/div[5]/div[2]/p[2]/a').click()
@@ -137,9 +139,7 @@ class TitleSpan(unittest.TestCase):
             self.add_img()
             self.driver.close()
             self.driver.switch_to.window(window_2)
-        #print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
-        self.supportLinkButton()
-        #print "time_stamp       " + time_stamp.strftime('%Y.%m.%d-%H:%M:%S')
+
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
