@@ -38,3 +38,12 @@ class CommonMethod():
         """
         elem = driver.find_element_by_xpath(elem)
         ActionChains(driver).move_to_element(elem).perform()
+
+    def roll(self,elem,driver):
+        """
+        :param elem: 需要滚动到的位置的XPATH
+        :param driver: 驱动实例
+        :return: 将屏幕滚动到某个元素位置的方法，无返回值
+        """
+        target = driver.find_element_by_xpath(elem)
+        driver.execute_script("arguments[0].scrollIntoView();", target)

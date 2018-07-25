@@ -28,6 +28,21 @@ class Company(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
 
+    def wall_step(self,page,counts):
+        """
+        :param page:验证第几页的logo墙
+        :param counts:当前页有几个logo
+        :return:logo墙测试方法，无返回值
+        """
+        for i in range(1,counts+1):
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
+            window_1 = self.driver.current_window_handle
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three"]/div/div[1]/div[%d]'%i).click()
+            self.comme.WinMove(window_1,self.driver)
+            self.add_img()
+            self.driver.close()
+            self.driver.switch_to.window(window_1)
+
     def test_company_1_ex(self):
 
         self.setup_get()
@@ -61,6 +76,14 @@ class Company(unittest.TestCase):
             self.add_img()
             self.driver.close()
             self.driver.switch_to.window(window_1)
+
+    def test_logowall(self):
+        self.setup_get()
+
+        self.wall_step(1,15)
+
+        self.wall_step(2,13)
+
 
 
 if __name__ == '__main__':
