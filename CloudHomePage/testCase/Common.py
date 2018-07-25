@@ -26,7 +26,7 @@ class CommonMethod():
         :return: 窗口移动的方法，无返回值
         """
         windows = driver.window_handles#获取所有窗口handle
-        for current_window in windows:   #循环遍历当handle不等于当前的handle时移动到该窗口
+        for current_window in windows:   #循环遍历当handle不等于第一个窗口的handle时移动到该窗口
             if current_window != win:
                 driver.switch_to.window(current_window)
 
