@@ -5,14 +5,14 @@ import unittest
 import HTMLTestRunner5
 import time
 
-from testCase import HomePage,Product,Shopping,Company
+from testCase import TitleSpan,Product,Shopping,Company
 
 #获取当前时间
 now=time.strftime("%Y%m%d%H%S%S",time.localtime())
 #定义测试容器
 testunit = unittest.TestSuite()
 #将测试用例添加到容器中
-testunit.addTest(unittest.makeSuite(HomePage.HomePage))
+testunit.addTest(unittest.makeSuite(TitleSpan.TitleSpan))
 testunit.addTest(unittest.makeSuite(Shopping.Shopping))
 testunit.addTest(unittest.makeSuite(Product.Product))
 testunit.addTest(unittest.makeSuite(Company.Company))

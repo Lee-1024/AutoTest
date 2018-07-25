@@ -5,7 +5,7 @@ import unittest
 import time
 from Common import CommonMethod
 
-class HomePage(unittest.TestCase):
+class TitleSpan(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
