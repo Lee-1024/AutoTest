@@ -299,22 +299,18 @@ class HomePage(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
         time.sleep(3)
-        window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[5]/span').click()
-        comme = CommonMethod()
-        comme.WinMove(window_1,self.driver)
         self.add_img()
         text = self.driver.find_element_by_xpath('//*[@class="supportList"]/h5/a').text
         self.assertIn(u'营销',text)
 
         texts = [u'营销',u'推荐',u'付款',u'佣金',u'配置',u'查看',u'链接',u'报告']
         #循环点击内容
-        for i in range(1, 9):
-            pa = '//*[@class="vc_column-inner "]/div/div/div/section/div/div/div[%d]/h5/a'%i
-            self.driver.find_element_by_xpath(pa).click()
+        for i in range(0, 8):
+            self.driver.find_elements_by_class_name('supportList')[i].click()
             time.sleep(2)
-            text =self.driver.find_element_by_xpath('//*[@class="vc_column-inner "]/div/div/div/section/div/h4').text
-            self.assertIn(texts[i-1],text)
+            text =self.driver.find_element_by_xpath('//*[@class="supportTit"]').text
+            self.assertIn(texts[i],text)
             self.add_img()
             self.driver.back()
 

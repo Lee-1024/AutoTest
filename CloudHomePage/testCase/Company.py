@@ -50,5 +50,18 @@ class Company(unittest.TestCase):
             self.driver.close()
             self.driver.switch_to.window(window_1)
 
+    def test_company_2(self):
 
-        time.sleep(5)
+        self.setup_get()
+        window_1 = self.driver.current_window_handle
+
+        for i in range(1,9):
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-two"]/div/div[%d]'%i).click()
+            self.comme.WinMove(window_1,self.driver)
+            self.add_img()
+            self.driver.close()
+            self.driver.switch_to.window(window_1)
+
+
+if __name__ == '__main__':
+    unittest.main()

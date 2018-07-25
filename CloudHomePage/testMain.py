@@ -5,7 +5,7 @@ import unittest
 import HTMLTestRunner5
 import time
 
-from testCase import HomePage,Product,Shopping
+from testCase import HomePage,Product,Shopping,Company
 
 #获取当前时间
 now=time.strftime("%Y%m%d%H%S%S",time.localtime())
@@ -13,8 +13,9 @@ now=time.strftime("%Y%m%d%H%S%S",time.localtime())
 testunit = unittest.TestSuite()
 #将测试用例添加到容器中
 testunit.addTest(unittest.makeSuite(HomePage.HomePage))
-testunit.addTest(unittest.makeSuite(Product.Product))
 testunit.addTest(unittest.makeSuite(Shopping.Shopping))
+testunit.addTest(unittest.makeSuite(Product.Product))
+testunit.addTest(unittest.makeSuite(Company.Company))
 #定义一个报告存放路径
 filepath = "D:\\AutoTest\\CloudHomePage\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
