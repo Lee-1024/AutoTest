@@ -323,40 +323,38 @@ class TitleSpan(unittest.TestCase):
         self.driver.find_element_by_class_name('apsClose').click()
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
-        #代理商
-        window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()
-        comme = CommonMethod()
-        comme.WinMove(window_1,self.driver)
-        window_2 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击申请
-        comme.WinMove(window_2,self.driver)
-        self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
+        #-----代理商------#
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()#点击成为代理商
+        text = self.driver.find_element_by_class_name('contact-form-div-title').text
+        self.assertIn(u'代理',text)
+
+        self.driver.find_element_by_id('userName').send_keys('TESTER@test.com') #用户名
+        self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
+        #公司规模
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[3]/div/div/div[2]/div/span/div/div/span').click()
+        self.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/ul/li[1]').click()
+        #行业
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[4]/div/div/div[2]/div/span/div/div/span').click()
+        self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
+
+        self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
+        self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
+        #联系人职务
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[7]/div/div/div[2]/div/span/div/div/span').click()
+        self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
+
+        self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
+        self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
+
+        #点击提交
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[10]/div/div/div/div/span/button').click()
+        time.sleep(2)
         self.add_img()
-        text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
-        self.assertIn(u'必填',text)
-        self.driver.close()
-        self.driver.switch_to.window(window_2)#移动到第二窗口
-        self.driver.close()
-        self.driver.switch_to.window(window_1)#移动到第一窗口
-        #加盟
+        #-----厂商-----#
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
-        window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
-        comme.WinMove(window_1,self.driver)
-        window_2 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="content-box"]/div[2]/a[1]').click()#点击联系我们
-        comme.WinMove(window_2,self.driver)
-        self.driver.find_element_by_xpath('//div[@class="applyLogin"]/input').click()#点击立即申请
-        self.add_img()
-        text = self.driver.find_element_by_xpath('//form[@class="wpcf7-form invalid"]/div[2]/div[1]/div[2]/span/span').text
-        self.assertIn(u'必填',text)
-        self.driver.close()
-        self.driver.switch_to.window(window_2)#移动到第二窗口
-        self.driver.close()
-        self.driver.switch_to.window(window_1)#移动到第一窗口
 
+        time.sleep(5)
 
 if __name__ == '__main__':
     unittest.main()

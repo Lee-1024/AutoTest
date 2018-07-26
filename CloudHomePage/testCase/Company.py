@@ -85,6 +85,5 @@ class Company(unittest.TestCase):
         self.wall_step(2,13)
 
 
-
 if __name__ == '__main__':
     unittest.main()
