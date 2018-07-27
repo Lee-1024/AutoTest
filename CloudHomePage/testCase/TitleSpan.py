@@ -223,12 +223,18 @@ class TitleSpan(unittest.TestCase):
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'AWS',)
         self.step(13,checks)
+    def test_management(self):
+        u"""企业管理"""
+        self.setup_get()
+        self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
+        checks = (u'纷享',)
+        self.step(14,checks)
     def test_mmonitoringService(self):
         u"""监控服务类别中的选项验证"""
         self.setup_get()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         checks = (u'Smonitor',u'监控宝',u'Insight','Browser','Mobile','OneAlert')
-        self.step(15,checks)
+        self.step(16,checks)
 
 
     def test_office(self):
@@ -240,40 +246,40 @@ class TitleSpan(unittest.TestCase):
         self.driver.find_element_by_class_name('apsClose').click()
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击Office365
-        self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[1]/a','OFFICE')
+        self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[1]/a','OFFICE')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击WPS+云办公
-        self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[2]/a','WPS')
+        self.office_ex('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[2]/a','WPS')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击编++
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[3]/a','//*[@class="productTitle"]/strong',u'编')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[3]/a','//*[@class="productTitle"]/strong',u'编')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击由你飞
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[4]/a','//*[@class="productTitle"]/strong',u'Unify')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[4]/a','//*[@class="productTitle"]/strong',u'Unify')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击云势软件客户关系管理系统
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[5]/a','//*[@class="productTitle"]/strong',u'客户关系')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[5]/a','//*[@class="productTitle"]/strong',u'客户关系')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击云势软件架构指标管理系统
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[6]/a','//*[@class="productTitle"]/strong',u'架构指标')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[6]/a','//*[@class="productTitle"]/strong',u'架构指标')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击云势软件奖金返利管理系统
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[7]/a','//*[@class="productTitle"]/strong',u'奖金返利')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[7]/a','//*[@class="productTitle"]/strong',u'奖金返利')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #ProcessOn
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[8]/a','//*[@class="productTitle"]/strong',u'essOn')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[8]/a','//*[@class="productTitle"]/strong',u'essOn')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击今目标
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[9]/a','//*[@class="productTitle"]/strong',u'目标',check1=u'今目标')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[9]/a','//*[@class="productTitle"]/strong',u'目标',check1=u'今目标')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击PGS航旅电子客票平台
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[10]/a','//*[@class="productTitle"]/strong',u'PGS')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[10]/a','//*[@class="productTitle"]/strong',u'PGS')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击服网云桌面解决方案
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[11]/a','//*[@class="productTitle"]/strong',u'服网云')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[11]/a','//*[@class="productTitle"]/strong',u'服网云')
         self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
         #点击法大大
-        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[14]/ul/li[12]/a','//*[@class="productTitle"]/strong',u'电子合同')
+        self.office_com('//div[@class="titleMain"]/ul/li[1]/div/ul/li[15]/ul/li[12]/a','//*[@class="productTitle"]/strong',u'电子合同')
 
     def test_zprocurement(self):
         u"""一站式采购验证"""
@@ -350,11 +356,41 @@ class TitleSpan(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[10]/div/div/div/div/span/button').click()
         time.sleep(2)
         self.add_img()
+        time.sleep(1)
         #-----厂商-----#
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
+        self.driver.find_element_by_id('companyName').send_keys('Company') #公司名称
+        self.driver.find_element_by_id('userName').send_keys('Tester') #联系人姓名
+        self.driver.find_element_by_id('userPhone').send_keys('13434344545') #联系人电话
+        self.driver.find_element_by_id('userEmail').send_keys('Tester@123.com') #电子邮箱
 
-        time.sleep(5)
+        #厂商相关问题
+        self.driver.find_element_by_id('yearTurnover').send_keys('100')#年营业额
+        self.driver.find_element_by_xpath('//*[@id="api"]/label[1]/span[1]/input').click()#是否文档化
+        self.driver.find_element_by_id('incomeRatio').send_keys('0.33')#年收入比例
+        self.driver.find_element_by_id('decemberBudget').send_keys('100')#营销预算
+        self.driver.find_element_by_id('twelveBudget').send_keys('100')#销售预算
+        self.driver.find_element_by_id('channelDiscounts').send_keys('0.22')#渠道折扣
+        self.driver.find_element_by_id('overlayArea').send_keys('10')#几个区域
+        self.driver.find_element_by_id('solutionIntegration').send_keys('100')#方案集成
+        self.driver.find_element_by_id('marketShare').send_keys(u'测试测试测试')#市场份额
+        self.driver.find_element_by_id('targetMarket').send_keys('99')#目标市场
+        self.driver.find_element_by_xpath('//*[@id="varChannelStrategy"]/label[1]/span[1]/input').click()#VAR
+        self.driver.find_element_by_xpath('//*[@id="mspChannelStrategy"]/label[1]/span[1]/input').click()#MSP
+        self.driver.find_element_by_xpath('//*[@id="providerChannelStrategy"]/label[1]/span[1]/input').click()#通讯
+        self.driver.find_element_by_xpath('//*[@id="policySupport"]/label[1]/span[1]/input').click()#政策支撑
+        self.driver.find_element_by_xpath('//*[@id="soleDuty"]/label[1]/span[1]/input').click()#销售团队
+        self.driver.find_element_by_xpath('//*[@id="edxclusivedistribution"]/label[1]/span[1]/input').click()#转售协议
+        self.driver.find_element_by_xpath('//*[@id="cooperativePartner"]/label[1]/span[1]/input').click()#合作伙伴
+        self.driver.find_element_by_xpath('//*[@id="authorizationCertification"]/label[1]/span[1]/input').click()#销售产品
+        self.driver.find_element_by_xpath('//*[@id="monthSubscribe"]/label[1]/span[1]/input').click()#订阅选项
+
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[27]/div/div/div/div/span/button').click()
+        time.sleep(2)
+        self.add_img()
+
 
 if __name__ == '__main__':
     unittest.main()
