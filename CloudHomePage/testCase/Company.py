@@ -82,7 +82,7 @@ class Company(unittest.TestCase):
 
         self.wall_step(1,15)
 
-        self.wall_step(2,13)
+        self.wall_step(2,14)
 
 
 if __name__ == '__main__':
