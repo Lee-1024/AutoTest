@@ -35,9 +35,11 @@ class Company(unittest.TestCase):
         :return:logo墙测试方法，无返回值
         """
         for i in range(1,counts+1):
+            self.comme.roll('//div[@class="company-prefecture-two-content"]/div[5]',self.driver)
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
+            time.sleep(0.3)
             window_1 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three"]/div/div[1]/div[%d]'%i).click()
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-div"]/div[%d]'%i).click()
             self.comme.WinMove(window_1,self.driver)
             self.add_img()
             self.driver.close()
@@ -46,8 +48,10 @@ class Company(unittest.TestCase):
     def test_company_1_ex(self):
 
         self.setup_get()
+        time.sleep(1)
         window_1 = self.driver.current_window_handle
-        self.driver.find_element_by_xpath('//div[@class="company-prefecture"]/div[2]/div/div[1]/div[2]/button').click()
+        self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
+        self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div"]/div[2]/button').click()
         self.comme.WinMove(window_1,self.driver)
         self.add_img()
         self.driver.close()
@@ -59,7 +63,8 @@ class Company(unittest.TestCase):
         window_1 = self.driver.current_window_handle
 
         for i in range(1,4):
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture"]/div[2]/div/div[2]/div[%d]'%i).click()
+            self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div-middle"]/div[%d]'%i).click()
             self.comme.WinMove(window_1,self.driver)
             self.add_img()
             self.driver.close()
@@ -71,7 +76,7 @@ class Company(unittest.TestCase):
         window_1 = self.driver.current_window_handle
 
         for i in range(1,9):
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture-two"]/div/div[%d]'%i).click()
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-two-content"]/div[%d]'%i).click()
             self.comme.WinMove(window_1,self.driver)
             self.add_img()
             self.driver.close()
