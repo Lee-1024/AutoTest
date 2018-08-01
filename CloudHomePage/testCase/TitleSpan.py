@@ -330,7 +330,7 @@ class TitleSpan(unittest.TestCase):
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
         #-----代理商------#
-        self.driver.find_element_by_xpath('//div[@class="titleSpan"]/div[2]/ul/li[1]/ul/li/a').click()#点击成为代理商
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[1]/ul/li/a').click()#点击成为代理商
         text = self.driver.find_element_by_class_name('contact-form-div-title').text
         self.assertIn(u'代理',text)
 
@@ -360,7 +360,7 @@ class TitleSpan(unittest.TestCase):
         #-----厂商-----#
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
-        self.driver.find_element_by_xpath('//div[@class="titleSpan"]/div[2]/ul/li[2]/ul/li/a').click()
+        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[4]/div/ul/li[2]/ul/li/a').click()
         self.driver.find_element_by_id('companyName').send_keys('Company') #公司名称
         self.driver.find_element_by_id('userName').send_keys('Tester') #联系人姓名
         self.driver.find_element_by_id('userPhone').send_keys('13434344545') #联系人电话

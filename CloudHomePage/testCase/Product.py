@@ -30,11 +30,11 @@ class Product(unittest.TestCase):
         :param ele3: 点击该行一个元素后，下面有几个点击项
         :return: 云产品区操作方法，无返回值
         """
-        self.driver.find_element_by_xpath('//div[@class="product-introduction"]/div[%d]/div/div[%d]'%(ele1+1,ele2)).click()
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[3]/div/div/div[%d]/div[1]/div[%d]'%(ele1+1,ele2)).click()
         time.sleep(2)
         for i in range(1,ele3+1):
             window_1 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="product-introduction"]/div[%d]/div[3]/div/div/div[%d]'%(ele1+1,i)).click()
+            self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[3]/div/div/div[%d]/div[3]/div/div/div[%d]'%(ele1+1,i)).click()
             self.comme.WinMove(window_1,self.driver)
 
             self.add_img()
