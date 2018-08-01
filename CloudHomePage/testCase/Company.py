@@ -34,12 +34,21 @@ class Company(unittest.TestCase):
         :param counts:当前页有几个logo
         :return:logo墙测试方法，无返回值
         """
+        self.comme.roll('//div[@class="company-prefecture-two-content"]/div[5]',self.driver)
+
+        time.sleep(0.8)
         for i in range(1,counts+1):
-            self.comme.roll('//div[@class="company-prefecture-two-content"]/div[5]',self.driver)
+            self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[1]',self.driver)
+            time.sleep(0.1)
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
-            time.sleep(0.3)
+            time.sleep(2)
+            #self.driver.implicitly_wait(2)
             window_1 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-div"]/div[%d]'%i).click()
+
+            if  self.comme.isElementExist('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver):
+                self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
+                time.sleep(1.5)
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
             self.comme.WinMove(window_1,self.driver)
             self.add_img()
             self.driver.close()
@@ -87,7 +96,9 @@ class Company(unittest.TestCase):
 
         self.wall_step(1,15)
 
-        self.wall_step(2,14)
+        self.wall_step(2,15)
+
+        self.wall_step(3,2)
 
 
 if __name__ == '__main__':
