@@ -39,7 +39,7 @@ class Company(unittest.TestCase):
         time.sleep(0.8)
         for i in range(1,counts+1):
             self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[1]',self.driver)
-            time.sleep(0.1)
+            time.sleep(0.5)
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
             time.sleep(2)
             #self.driver.implicitly_wait(2)
