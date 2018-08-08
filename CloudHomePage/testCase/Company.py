@@ -41,17 +41,6 @@ class Company(unittest.TestCase):
             self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[1]',self.driver)
             time.sleep(0.1)
 
-            #self.driver.implicitly_wait(2)
-            window_1 = self.driver.current_window_handle
-
-            # if  self.comme.isElementExist('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver):
-            #     self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
-            #     time.sleep(1.8)
-
-            # self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver)
-            # time.sleep(0.1)
-
-
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
             time.sleep(2)
             self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver)
@@ -61,47 +50,48 @@ class Company(unittest.TestCase):
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
                 time.sleep(1.8)
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
-            self.comme.WinMove(window_1,self.driver)
+
             self.add_img()
-            self.driver.close()
-            self.driver.switch_to.window(window_1)
+            self.driver.back()
 
     def test_company_1_ex(self):
-
+        u"""金山云"""
         self.setup_get()
         time.sleep(1)
-        window_1 = self.driver.current_window_handle
         self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
         self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div"]/div[2]/button').click()
-        self.comme.WinMove(window_1,self.driver)
         self.add_img()
-        self.driver.close()
-        self.driver.switch_to.window(window_1)
+        text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
+        self.assertIn(u'金山',text1)
+        self.driver.back()
 
     def test_company_1_com(self):
-
+        u"""金山云服务器，弹性IP，WPS+云办公"""
         self.setup_get()
-        window_1 = self.driver.current_window_handle
-
+        checklist=(u'服务器',u'弹性',u'云办公')
         for i in range(1,4):
             self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div-middle"]/div[%d]'%i).click()
-            self.comme.WinMove(window_1,self.driver)
+            time.sleep(0.5)
             self.add_img()
-            self.driver.close()
-            self.driver.switch_to.window(window_1)
+            text2 = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
+            self.assertIn(checklist[i-1],text2)
+
+            self.driver.back()
 
     def test_company_2(self):
-
+        u"""微软，今目标，阿里云，腾讯云，华为云，绿盟，并行，云势"""
         self.setup_get()
-        window_1 = self.driver.current_window_handle
-
+        checklist=(u'微软',u'今目标',u'阿里云',u'腾讯云',u'华为云',u'绿盟',u'并行',u'云势')
+        self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
         for i in range(1,9):
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-two-content"]/div[%d]'%i).click()
-            self.comme.WinMove(window_1,self.driver)
+            time.sleep(0.5)
             self.add_img()
-            self.driver.close()
-            self.driver.switch_to.window(window_1)
+            text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
+            self.assertIn(checklist[i-1],text1)
+            self.driver.back()
+
 
     def test_logowall(self):
         self.setup_get()
@@ -110,7 +100,7 @@ class Company(unittest.TestCase):
 
         self.wall_step(2,15)
 
-        self.wall_step(3,3)
+        self.wall_step(3,4)
 
 
 if __name__ == '__main__':
