@@ -39,16 +39,28 @@ class Company(unittest.TestCase):
         time.sleep(0.8)
         for i in range(1,counts+1):
             self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[1]',self.driver)
-            time.sleep(0.5)
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
-            time.sleep(2)
+            time.sleep(0.1)
+
             #self.driver.implicitly_wait(2)
             window_1 = self.driver.current_window_handle
 
-            if  self.comme.isElementExist('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver):
+            # if  self.comme.isElementExist('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver):
+            #     self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
+            #     time.sleep(1.8)
+
+            # self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver)
+            # time.sleep(0.1)
+
+
+            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
+            time.sleep(2)
+            self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver)
+            try:
+                self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
+            except:
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
-                time.sleep(1.5)
-            self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
+                time.sleep(1.8)
+                self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
             self.comme.WinMove(window_1,self.driver)
             self.add_img()
             self.driver.close()
@@ -98,7 +110,7 @@ class Company(unittest.TestCase):
 
         self.wall_step(2,15)
 
-        self.wall_step(3,2)
+        self.wall_step(3,3)
 
 
 if __name__ == '__main__':
