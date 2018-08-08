@@ -40,23 +40,23 @@ class TitleSpan(unittest.TestCase):
         for h in range(1,len(product)+1):
             self.comme.hover('//div[@class="titleMain"]/ul/li[1]/span',self.driver)
             time.sleep(1)
-            self.comme.hover('//div[@class="titleSpan"]/div[2]/ul/li[1]/ul/li[%d]'%firstsort,self.driver)
+            self.comme.hover('//div[@class="titleMain"]/div[3]/ul/li[1]/ul/li[%d]'%firstsort,self.driver)
             time.sleep(1)
-            self.comme.hover('//div[@class="titleSpan"]/div[2]/ul/li[2]/ul/li[%d]'%secondsort,self.driver)
+            self.comme.hover('//div[@class="titleMain"]/div[3]/ul/li[2]/ul/li[%d]'%secondsort,self.driver)
             time.sleep(1)
-            self.driver.find_element_by_xpath('//div[@class="titleSpan"]/div[2]/ul/li[3]/div/span[%d]'%h).click()
+            self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/ul/li[3]/div/span[%d]'%h).click()
             time.sleep(3)
-            text = self.driver.find_element_by_xpath('//div[@class="library-product-main"]/div[2]/h6').text
+            text = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
             self.assertIn(product[h-1],text)
-            self.comme.roll('//div[@class="DraftEditor-root"]/div/div/div/div[3]/div/h1/span/span',self.driver)
+            #self.comme.roll('//div[@class="DraftEditor-root"]/div/div/div/div[3]/div/h1/span/span',self.driver)
             self.add_img()
             self.driver.back()
 
     def test_cloudservice(self):
         self.setup_get()
         time.sleep(1)
-        check_list = [u'WPS',u'服务器',u'IP']
-        self.step_test(3,2,check_list)
+        check_list = [u'OSS',u'SLB',u'COS']
+        self.step_test(1,1,check_list)
 
     def test_zprocurement(self):
         u"""一站式采购验证"""
