@@ -2,7 +2,6 @@
 __author__ = 'Lee'
 from selenium import webdriver
 import unittest,time
-import logging
 from Common import CommonMethod
 
 class OtherTest(unittest.TestCase):
@@ -133,7 +132,7 @@ class OtherTest(unittest.TestCase):
             elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog('3333')
+                self.comme.mylog(u"进入到该判断")
             self.add_img()
             self.driver.back()
 
