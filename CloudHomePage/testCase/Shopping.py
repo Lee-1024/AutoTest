@@ -48,7 +48,7 @@ class Shopping(unittest.TestCase):
         time.sleep(1)
         for i in range(1,len(check)+1):
             window_2 = self.driver.current_window_handle
-            self.driver.find_element_by_class_name('on-line-play-content-right').click()
+            self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[2]/div/div/div[2]/img').click()
             time.sleep(2)
             self.driver.find_element_by_xpath('//div[@class="shopping-content"]/div/div[5]/div/img').click()
             self.comme.WinMove(window_2,self.driver)
