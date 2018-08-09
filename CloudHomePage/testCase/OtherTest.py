@@ -1,7 +1,7 @@
 #_*_ coding:utf-8 _*_
 __author__ = 'Lee'
 from selenium import webdriver
-import unittest,time
+import unittest,time,random
 from Common import CommonMethod
 
 class OtherTest(unittest.TestCase):
@@ -135,6 +135,31 @@ class OtherTest(unittest.TestCase):
                 self.comme.mylog(u"进入到该判断")
             self.add_img()
             self.driver.back()
+
+    def test_down_blog(self):
+        u"""页脚博客与进入博客中的各个刷选标签"""
+        self.setup_get()
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]',self.driver)
+        time.sleep(1)
+        #点击进入博客
+        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[2]/a').click()
+        #点击展开标识
+        self.driver.find_element_by_xpath('//div[@class="ant-anchor"]/div[2]/a').click()
+        #点击标签
+        self.driver.find_element_by_xpath('//div[@class="ant-anchor"]/div[2]/div[2]/div[%d]'%(random.randint(1,11))).click()
+        time.sleep(2)
+        #点击关键词
+        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[2]/div[2]/div/div[%d]'%(random.randint(1,30))).click()
+        time.sleep(2)
+        #点击行业
+        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[3]/div[2]/div/div[%d]'%(random.randint(1,25))).click()
+        time.sleep(3)
+        self.add_img()
+        #点击top博主
+        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%(random.randint(2,4))).click()
+        self.comme.roll('//div[@class="main-div-panel-left "]/div[1]/div/div',self.driver)
+        time.sleep(2)
+        self.add_img()
 
 if __name__ == '__main__':
     unittest.main()
