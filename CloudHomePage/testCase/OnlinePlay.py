@@ -26,7 +26,7 @@ class OlinePlay(unittest.TestCase):
     def step(self,check):
         """
         :param check: 检查点列表，传入列表或元组
-        :return: 一站式购买中产品方法，无返回值
+        :return: 产品直播间中测试步骤方法，无返回值
         """
         self.comme.roll('//div[@class="on-line-play-content"]/div/div[4]/div[2]/div/span',self.driver)
         for i in range(1,len(check)+1):
@@ -36,13 +36,16 @@ class OlinePlay(unittest.TestCase):
             WinMov.WinMove(window_2,self.driver)
             self.add_img()
             title=self.driver.title
-            print title
+
             self.assertIn(check[i-1],title)
             self.driver.close()
             self.driver.switch_to.window(window_2)
 
     def step_last(self,check):
-
+        """
+        :param check: 检查点列表，传入title列表或元组
+        :return:直播间点击左移后的直播测试步骤方法，无返回值
+        """
         self.comme.roll('//div[@class="on-line-play-content"]/div/div[4]/div[2]/div/span',self.driver)
         time.sleep(1)
         for i in range(1,len(check)+1):
@@ -54,7 +57,7 @@ class OlinePlay(unittest.TestCase):
             self.comme.WinMove(window_2,self.driver)
 
             title=self.driver.title
-            print title
+
             self.assertIn(check[i-1],title)
             self.add_img()
             self.driver.close()

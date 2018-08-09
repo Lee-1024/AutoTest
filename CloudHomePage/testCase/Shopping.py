@@ -40,7 +40,10 @@ class Shopping(unittest.TestCase):
             self.driver.switch_to.window(window_2)
 
     def step_last(self,check):
-
+        """
+        :param check: 检查点列表，传入产品名列表或者元组
+        :return:一站式购买点击左移后的产品的测试步骤，无返回值
+        """
         self.comme.roll('//div[@class="shopping-content"]/div/div[4]/div/img',self.driver)
         time.sleep(1)
         for i in range(1,len(check)+1):

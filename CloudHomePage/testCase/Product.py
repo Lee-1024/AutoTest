@@ -40,11 +40,11 @@ class Product(unittest.TestCase):
             if self.comme.isElementExist('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div',self.driver):
                 text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
                 self.assertIn(check_list[i-1],text1)
-                print 'success'
+
             elif self.comme.isElementExist('//div[@class="product-item-title"]/span',self.driver):
                 text2 = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
                 self.assertIn(check_list[i-1],text2)
-                print 'success!!!!'
+
             self.driver.back()
             self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]'%(ele1+1,ele2)).click()
             time.sleep(1)

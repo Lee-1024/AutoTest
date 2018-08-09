@@ -2,6 +2,7 @@
 __author__ = 'Lee'
 from selenium import webdriver
 import unittest,time
+import logging
 from Common import CommonMethod
 
 class OtherTest(unittest.TestCase):
@@ -96,3 +97,45 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[2]/div/div/div/div/span/button').click()
         time.sleep(2)
         self.add_img()
+
+    def test_product_and_server(self):
+        u"""产品与服务"""
+        self.setup_get()
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[2]/div/div[1]',self.driver)
+        time.sleep(1)
+        checklist = [u'365',u'WPS',u'目标',u'金山']
+        for i in range(1,len(checklist)+1):
+            window_2 = self.driver.current_window_handle
+            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[2]/div/div[%d]/a'%(i+1)).click()
+            time.sleep(2)
+            self.comme.WinMove(window_2,self.driver)
+            text1 = self.driver.find_element_by_class_name('BlockName').text
+            self.assertIn(checklist[i-1],text1)
+            self.add_img()
+            self.driver.close()
+            self.driver.switch_to.window(window_2)
+
+    def test_about(self):
+        u"""关于我们"""
+        self.setup_get()
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[3]/div/div[1]',self.driver)
+        time.sleep(1)
+        checklist = [u'海航',u'协议',u'营销']
+        for i in range(1,len(checklist)+1):
+            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[3]/div/div[%d]/a'%(i+1)).click()
+            time.sleep(2)
+            if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
+                text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
+                self.assertIn(checklist[i-1],text)
+            elif self.comme.isElementExist('//*[@id="userAgreement"]/div[1]/h2',self.driver):
+                text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
+                self.assertIn(checklist[i-1],text)
+            elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
+                text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
+                self.assertIn(checklist[i-1],text)
+                self.comme.mylog('3333')
+            self.add_img()
+            self.driver.back()
+
+if __name__ == '__main__':
+    unittest.main()
