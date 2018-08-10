@@ -1,10 +1,10 @@
-# _*_ coding:utf-8 _*_
+#_*_ coding:utf-8 _*_
 __author__ = 'Lee'
 from selenium import webdriver
 import unittest,time
 from Common import CommonMethod
 
-class Shopping(unittest.TestCase):
+class OlinePlay(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -26,47 +26,52 @@ class Shopping(unittest.TestCase):
     def step(self,check):
         """
         :param check: 检查点列表，传入列表或元组
-        :return: 一站式购买中产品方法，无返回值
+        :return: 产品直播间中测试步骤方法，无返回值
         """
+        self.comme.roll('//div[@class="on-line-play-content"]/div/div[4]/div[2]/div/span',self.driver)
         for i in range(1,len(check)+1):
             window_2 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="shopping-content"]/div/div[%d]/div/img'%i).click()
+            self.driver.find_element_by_xpath('//div[@class="on-line-play-content"]/div/div[%d]/div[2]/div/span'%i).click()
             WinMov = CommonMethod()
             WinMov.WinMove(window_2,self.driver)
-            text1 = self.driver.find_element_by_class_name('BlockName').text
-            self.assertIn(check[i-1],text1)
             self.add_img()
+            title=self.driver.title
+
+            self.assertIn(check[i-1],title)
             self.driver.close()
             self.driver.switch_to.window(window_2)
 
     def step_last(self,check):
         """
-        :param check: 检查点列表，传入产品名列表或者元组
-        :return:一站式购买点击左移后的产品的测试步骤，无返回值
+        :param check: 检查点列表，传入title列表或元组
+        :return:直播间点击左移后的直播测试步骤方法，无返回值
         """
-        self.comme.roll('//div[@class="shopping-content"]/div/div[4]/div/img',self.driver)
+        self.comme.roll('//div[@class="on-line-play-content"]/div/div[4]/div[2]/div/span',self.driver)
         time.sleep(1)
         for i in range(1,len(check)+1):
             window_2 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[2]/div/div/div[2]/img').click()
+
+            self.driver.find_element_by_class_name('on-line-play-content-right').click()
             time.sleep(2)
-            self.driver.find_element_by_xpath('//div[@class="shopping-content"]/div/div[5]/div/img').click()
+            self.driver.find_element_by_xpath('//div[@class="on-line-play-content"]/div/div[5]/div[2]/div/span').click()
             self.comme.WinMove(window_2,self.driver)
-            text1 = self.driver.find_element_by_class_name('BlockName').text
-            self.assertIn(check[i-1],text1)
+
+            title=self.driver.title
+
+            self.assertIn(check[i-1],title)
             self.add_img()
             self.driver.close()
             self.driver.switch_to.window(window_2)
 
-    def test_shopping(self):
+    def test_onlineplay(self):
 
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
-        checklist = [u'365',u'WPS',u'金山',u'今目标']
+        checklist = [u'法大大',u'云势',u'并行',u'绿盟']
         self.step(checklist)
 
-        checklist_last = [u'绿盟']
+        checklist_last = [u'华为',u'腾讯',u'今目标',u'金山',u'云集市']
         self.step_last(checklist_last)
 
 if __name__ == '__main__':
