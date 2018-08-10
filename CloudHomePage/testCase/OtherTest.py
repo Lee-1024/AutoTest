@@ -126,13 +126,15 @@ class OtherTest(unittest.TestCase):
             if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
                 self.assertIn(checklist[i-1],text)
+                self.comme.mylog(u'进入公司介绍判断')
             elif self.comme.isElementExist('//*[@id="userAgreement"]/div[1]/h2',self.driver):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
+                self.comme.mylog(u'进入协议判断')
             elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u"进入到该判断")
+                self.comme.mylog(u"进入支持该判断")
             self.add_img()
             self.driver.back()
 
