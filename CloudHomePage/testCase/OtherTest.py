@@ -126,7 +126,7 @@ class OtherTest(unittest.TestCase):
             if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u'进入公司介绍判断')
+                self.comme.mylog(u'进入介绍判断')
             elif self.comme.isElementExist('//*[@id="userAgreement"]/div[1]/h2',self.driver):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
@@ -162,6 +162,7 @@ class OtherTest(unittest.TestCase):
         self.comme.roll('//div[@class="main-div-panel-left "]/div[1]/div/div',self.driver)
         time.sleep(2)
         self.add_img()
+        self.comme.mylog(u'验证完成')
 
 if __name__ == '__main__':
     unittest.main()

@@ -52,7 +52,7 @@ class CommonMethod():
     def mylog(self,msg="Debug_message"):
         """
         :param msg: 日志输出的信息，默认为Debug_message
-        :return:封装日志输出方法，将日志输入到文件和控制台
+        :return:封装日志输出方法，返回日志，将日志输入到文件和控制台
         """
         logger = logging.getLogger('AutoTest_log')
         logger.setLevel(logging.DEBUG)
@@ -63,4 +63,4 @@ class CommonMethod():
         ch.setFormatter(formatter)
         logger.addHandler(fh)
         logger.addHandler(ch)
-        logger.debug(msg)
+        return logger.info(msg)
