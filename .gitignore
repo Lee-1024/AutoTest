@@ -8,4 +8,4 @@ build
 #other
 .idea
 result*.html
-*.lo
+*.log
