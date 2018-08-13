@@ -89,10 +89,10 @@ class PublishBlog(unittest.TestCase):
         # self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[4]/div[2]/div/div[1]').click()
         # self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div/div[5]/div[2]/div/div[1]').click()
         #测试上传图片
-        self.driver.find_element_by_xpath('//div[@class="ant-row richEditor-btn-bar"]/div[6]').click()
-        self.driver.find_element_by_xpath('//div[@class="richEditor-modal"]/span/span/input').send_keys('https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=db37d3b8454a20a425133495f13bf347/3b87e950352ac65c8819edd9f1f2b21193138a78.jpg')
+        self.driver.find_element_by_xpath('//div[@class="RE-toolbar-root"]/span[7]').click()
+        self.driver.find_element_by_id('url').send_keys('https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=db37d3b8454a20a425133495f13bf347/3b87e950352ac65c8819edd9f1f2b21193138a78.jpg')
         time.sleep(1)
-        self.driver.find_element_by_xpath('//div[@class="ant-modal-footer"]/div/button[2]').click()
+        self.driver.find_element_by_xpath('//div[@class="RE-modal-root"]/form/div[2]/div/div/span/button').click()
         time.sleep(2)
         #创建一个随机数
         index = random.randint(1,11)

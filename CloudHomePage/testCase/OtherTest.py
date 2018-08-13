@@ -75,18 +75,18 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
         #公司规模
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[3]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(1)
-        self.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/ul/li[1]').click()
+        time.sleep(2)
+        self.driver.find_elements_by_class_name('ant-select-dropdown-menu-item')[0].click()
         #行业
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[4]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
 
         self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
         self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
         #联系人职务
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[7]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
 
         self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
@@ -126,13 +126,15 @@ class OtherTest(unittest.TestCase):
             if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
                 self.assertIn(checklist[i-1],text)
+                self.comme.mylog(u'进入介绍判断')
             elif self.comme.isElementExist('//*[@id="userAgreement"]/div[1]/h2',self.driver):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
+                self.comme.mylog(u'进入协议判断')
             elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u"进入到该判断")
+                self.comme.mylog(u"进入支持该判断")
             self.add_img()
             self.driver.back()
 
@@ -160,6 +162,7 @@ class OtherTest(unittest.TestCase):
         self.comme.roll('//div[@class="main-div-panel-left "]/div[1]/div/div',self.driver)
         time.sleep(2)
         self.add_img()
+        self.comme.mylog(u'验证完成')
 
 if __name__ == '__main__':
     unittest.main()
