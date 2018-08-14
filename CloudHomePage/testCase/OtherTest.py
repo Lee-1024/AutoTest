@@ -32,7 +32,49 @@ class OtherTest(unittest.TestCase):
         u'''两个申请'''
         self.setup_get()
         self.comme.roll('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[1]',self.driver)
+
+        #分销商
+        #--点击分销商
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[1]/div[3]').click()
+        #--点击申请
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[4]/button').click()
+        #--填写信息
+        self.driver.find_element_by_id('userName').send_keys('TESTER@test.com') #用户名
+        self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
+        #公司规模
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[3]/div/div/div[2]/div/span/div/div/span').click()
+        time.sleep(2)
+        self.driver.find_elements_by_class_name('ant-select-dropdown-menu-item')[0].click()
+        #行业
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[4]/div/div/div[2]/div/span/div/div/span').click()
+        time.sleep(2)
+        try:
+            self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
+        except Exception as e:
+            self.comme.mylog(e)
+
+        self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
+        self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
+        #联系人职务
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[7]/div/div/div[2]/div/span/div/div/span').click()
+        time.sleep(2)
+        try:
+            self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
+        except Exception as e:
+            self.comme.mylog(e)
+
+        self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
+        self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
+
+        #点击提交
+        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[2]/div/div/div/div/span/button').click()
+        time.sleep(2)
+        self.add_img()
+        time.sleep(6)
+
         #厂商
+        self.comme.roll('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[1]',self.driver)
+
         self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[4]/button').click()
         self.driver.find_element_by_id('companyName').send_keys('Company') #公司名称
         self.driver.find_element_by_id('userName').send_keys('Tester') #联系人姓名
@@ -63,40 +105,7 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[6]/div/div/div/div/span/button').click()
         time.sleep(2)
         self.add_img()
-        time.sleep(6)
 
-        #分销商
-        self.comme.roll('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[1]',self.driver)
-        #--点击分销商
-        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[1]/div[3]').click()
-        #--点击申请
-        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[4]/button').click()
-        #--填写信息
-        self.driver.find_element_by_id('userName').send_keys('TESTER@test.com') #用户名
-        self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
-        #公司规模
-        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[3]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(2)
-        self.driver.find_elements_by_class_name('ant-select-dropdown-menu-item')[0].click()
-        #行业
-        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[4]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(2)
-        self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
-
-        self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
-        self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
-        #联系人职务
-        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[7]/div/div/div[2]/div/span/div/div/span').click()
-        time.sleep(2)
-        self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
-
-        self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
-        self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
-
-        #点击提交
-        self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[2]/div/div/div/div/span/button').click()
-        time.sleep(2)
-        self.add_img()
 
     def test_product_and_server(self):
         u"""产品与服务"""
