@@ -64,7 +64,7 @@ class OlinePlay(unittest.TestCase):
             self.driver.switch_to.window(window_2)
 
     def test_onlineplay(self):
-
+        u'''产品直播间'''
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()

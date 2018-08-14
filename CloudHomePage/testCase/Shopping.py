@@ -59,7 +59,7 @@ class Shopping(unittest.TestCase):
             self.driver.switch_to.window(window_2)
 
     def test_shopping(self):
-
+        u'''首页中一站式购买'''
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()

@@ -29,6 +29,7 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_class_name('apsClose').click()
 
     def test_partner_homepage(self):
+        u'''两个申请'''
         self.setup_get()
         self.comme.roll('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[1]',self.driver)
         #厂商
