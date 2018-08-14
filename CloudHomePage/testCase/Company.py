@@ -8,7 +8,7 @@ sys.path.append(parentUrl)
 from selenium import webdriver
 import unittest,time
 from Common.Common import CommonMethod
-
+from Common.Logger import Log
 class Company(unittest.TestCase):
 
     @classmethod
@@ -22,6 +22,7 @@ class Company(unittest.TestCase):
     def setUp(self):
         self.imgs = []
         self.comme = CommonMethod()
+        self.log = Log()
 
     def add_img(self):
         #截图添加到测试报告中的方法
@@ -52,7 +53,7 @@ class Company(unittest.TestCase):
             try:
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
             except Exception as e:
-                self.comme.mylog(e)
+                self.log.error(e)
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
                 time.sleep(1.8)
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
