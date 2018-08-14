@@ -1,7 +1,11 @@
 #_*_ coding:utf-8 _*_
 __author__ = 'Lee'
+import sys
+import os
+currentUrl = os.path.dirname(__file__)
+parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
+sys.path.append(parentUrl)
 from selenium.webdriver.common.action_chains import ActionChains
-import logging
 class CommonMethod():
 
     def __init__(self):
@@ -48,19 +52,3 @@ class CommonMethod():
         """
         target = driver.find_element_by_xpath(elem)
         driver.execute_script("arguments[0].scrollIntoView();", target)
-
-    def mylog(self,msg="Debug_message"):
-        """
-        :param msg: 日志输出的信息，默认为Debug_message
-        :return:封装日志输出方法，返回日志，将日志输入到文件和控制台
-        """
-        logger = logging.getLogger('AutoTest_log')
-        logger.setLevel(logging.DEBUG)
-        fh = logging.FileHandler('D:/AutoTest/Log/AutoTest.log')
-        ch = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        fh.setFormatter(formatter)
-        ch.setFormatter(formatter)
-        logger.addHandler(fh)
-        logger.addHandler(ch)
-        return logger.info(msg)

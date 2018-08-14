@@ -1,8 +1,14 @@
 #_*_ coding:utf-8 _*_
 __author__ = 'Lee'
+import sys
+import os
+currentUrl = os.path.dirname(__file__)
+parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
+sys.path.append(parentUrl)
 from selenium import webdriver
 import unittest,time,random
-from Common import CommonMethod
+from Common.Common import CommonMethod
+from Common.Logger import Log
 
 class OtherTest(unittest.TestCase):
 
@@ -17,6 +23,7 @@ class OtherTest(unittest.TestCase):
     def setUp(self):
         self.imgs = []
         self.comme = CommonMethod()
+        self.log = Log()
 
     def add_img(self):
         #截图添加到测试报告中的方法
@@ -51,7 +58,7 @@ class OtherTest(unittest.TestCase):
         try:
             self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
         except Exception as e:
-            self.comme.mylog(e)
+            self.log.error(e)
 
         self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
         self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
@@ -61,7 +68,7 @@ class OtherTest(unittest.TestCase):
         try:
             self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
         except Exception as e:
-            self.comme.mylog(e)
+            self.log.error(e)
 
         self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
         self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
@@ -136,15 +143,15 @@ class OtherTest(unittest.TestCase):
             if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u'进入介绍判断')
+
             elif self.comme.isElementExist('//*[@id="userAgreement"]/div[1]/h2',self.driver):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u'进入协议判断')
+
             elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
                 self.assertIn(checklist[i-1],text)
-                self.comme.mylog(u"进入支持该判断")
+
             self.add_img()
             self.driver.back()
 
@@ -168,11 +175,16 @@ class OtherTest(unittest.TestCase):
         time.sleep(3)
         self.add_img()
         #点击top博主
-        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%(random.randint(2,4))).click()
+        index = random.randint(2,4)
+        text1 = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%index).text
+        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%index).click()
+        time.sleep(1)
+        text2 = self.driver.find_element_by_xpath('//div[@class="personal-info-panel-info"]/div[2]').text
+        self.assertIn(text1,text2)
         self.comme.roll('//div[@class="main-div-panel-left "]/div[1]/div/div',self.driver)
         time.sleep(2)
         self.add_img()
-        self.comme.mylog(u'验证完成')
+        self.log.info(u'验证完成')
 
 if __name__ == '__main__':
     unittest.main()
