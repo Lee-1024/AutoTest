@@ -1,9 +1,13 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'Lee'
+import sys
+import os
+currentUrl = os.path.dirname(__file__)
+parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
+sys.path.append(parentUrl)
 from selenium import webdriver
 import unittest,time
-from Common import CommonMethod
-
+from Common.Common import CommonMethod
 class Shopping(unittest.TestCase):
 
     @classmethod
