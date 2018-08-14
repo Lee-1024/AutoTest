@@ -53,6 +53,7 @@ class TitleSpan(unittest.TestCase):
             self.driver.back()
 
     def test_cloudservice(self):
+        u'''云服务'''
         self.setup_get()
         time.sleep(1)
         check_list = [u'OSS',u'SLB',u'COS']

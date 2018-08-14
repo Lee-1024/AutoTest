@@ -50,7 +50,7 @@ class Product(unittest.TestCase):
             time.sleep(2)
 
     def test_Product_1(self):
-
+        u'''不断更新的云产品第一行'''
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
@@ -79,7 +79,7 @@ class Product(unittest.TestCase):
         self.step(1,6,5,checks)
 
     def test_Product_2(self):
-
+        u'''不断更新的云产品第二行'''
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()

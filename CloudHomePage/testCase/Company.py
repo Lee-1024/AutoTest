@@ -46,11 +46,12 @@ class Company(unittest.TestCase):
             self.comme.hover('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i,self.driver)
             try:
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
-            except:
+            except Exception as e:
+                self.comme.mylog(e)
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div-number"]/div[%d]/div'%page).click()
                 time.sleep(1.8)
                 self.driver.find_element_by_xpath('//div[@class="company-prefecture-three-div"]/div/div[%d]'%i).click()
-
+            time.sleep(1)
             self.add_img()
             self.driver.back()
 
@@ -94,6 +95,7 @@ class Company(unittest.TestCase):
 
 
     def test_logowall(self):
+        u'''logo墙'''
         self.setup_get()
 
         self.wall_step(1,15)
