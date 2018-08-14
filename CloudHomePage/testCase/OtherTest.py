@@ -168,7 +168,12 @@ class OtherTest(unittest.TestCase):
         time.sleep(3)
         self.add_img()
         #点击top博主
-        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%(random.randint(2,4))).click()
+        index = random.randint(2,4)
+        text1 = self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%index).text
+        self.driver.find_element_by_xpath('//div[@class="main-div-panel-right "]/div[4]/div[2]/div[%d]/div[1]/div/div[2]/a'%index).click()
+        time.sleep(1)
+        text2 = self.driver.find_element_by_xpath('//div[@class="personal-info-panel-info"]/div[2]').text
+        self.assertIn(text1,text2)
         self.comme.roll('//div[@class="main-div-panel-left "]/div[1]/div/div',self.driver)
         time.sleep(2)
         self.add_img()
