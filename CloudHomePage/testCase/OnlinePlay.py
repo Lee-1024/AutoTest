@@ -66,6 +66,7 @@ class OlinePlay(unittest.TestCase):
             self.assertIn(check[i-1],title)
             self.add_img()
             self.driver.close()
+            time.sleep(1)
             self.driver.switch_to.window(window_2)
 
     def test_onlineplay(self):
