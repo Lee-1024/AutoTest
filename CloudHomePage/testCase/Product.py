@@ -97,6 +97,21 @@ class Product(unittest.TestCase):
         #self.step(2,2,5)
 
 
+    def test_product_contact_us(self):
+        u'''产品联系我们'''
+        self.driver.get(self.comme.url)
+        self.driver.maximize_window()
+        self.driver.find_element_by_class_name('apsClose').click()
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[2]/div[1]/div[2]').click()
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[2]/div[3]/div/div/div[1]').click()
+        #点击联系我们
+        time.sleep(1)
+        self.driver.find_element_by_xpath('//div[@class="library-product-main"]/div[3]/button').click()
+        #填入邮件信息并发送
+        self.comme.contact_us(1,u'产品详情厂商',u'产品',u'13223233434',u'测试测试',self.driver)
+        time.sleep(1)
+
+
 if __name__ == '__main__':
     unittest.main()
 

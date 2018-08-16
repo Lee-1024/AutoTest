@@ -2,6 +2,7 @@
 __author__ = 'Lee'
 import sys
 import os
+import time
 currentUrl = os.path.dirname(__file__)
 parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
 sys.path.append(parentUrl)
@@ -52,3 +53,33 @@ class CommonMethod():
         """
         target = driver.find_element_by_xpath(elem)
         driver.execute_script("arguments[0].scrollIntoView();", target)
+
+
+    def contact_us(self,index,companyna,userna,tel,content,driver,email=""):
+        """
+        :param index: 选择第几个问题类型
+        :param companyna: 公司名称
+        :param userna: 用户名称
+        :param tel: 电话
+        :param content:留言信息
+        :param driver: 传入驱动
+        :param email: 邮件，默认为空
+        :return:联系我们的发送邮件测试方法
+        """
+        #点击问题类型并选择
+        driver.find_element_by_xpath('//*[@id="titleType"]/div/span').click()
+        time.sleep(1)
+        driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[%d]'%index).click()
+        #输入公司名称
+        driver.find_element_by_id('companyName').send_keys(companyna)
+        #输入联系人姓名
+        driver.find_element_by_id('userName').send_keys(userna)
+        #输入联系人电话
+        driver.find_element_by_id('userTel').send_keys(tel)
+        #输入邮箱
+        driver.find_element_by_id('eMail').send_keys(email)
+        #输入留言
+        driver.find_element_by_id('content').send_keys(content)
+        #点击提交
+        time.sleep(0.5)
+        driver.find_element_by_xpath('//div[@class="contact-form-main-contact"]/div[7]/div/div/div/div/span/button').click()

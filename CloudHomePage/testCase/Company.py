@@ -111,5 +111,17 @@ class Company(unittest.TestCase):
         self.wall_step(3,4)
 
 
+    def test_company_contact_us(self):
+        u'''公司联系我们'''
+        self.setup_get()
+        time.sleep(1)
+        self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
+        self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div"]/div[2]/button').click()
+        #点击联系我们
+        time.sleep(1)
+        self.driver.find_element_by_xpath('//div[@class="company-read-info-content"]/div[1]/div[3]/button').click()
+        #填入信息并提交
+        self.comme.contact_us(2,u'厂商联系测试',u'厂商',u'15656567878',u'测试测试',self.driver,u'test@123.com')
+        time.sleep(1)
 if __name__ == '__main__':
     unittest.main()

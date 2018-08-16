@@ -117,12 +117,12 @@ class OtherTest(unittest.TestCase):
     def test_product_and_server(self):
         u"""产品与服务"""
         self.setup_get()
-        self.comme.roll('//div[@class="bottom-info-items-div"]/div[2]/div/div[1]',self.driver)
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[1]/div/div[1]',self.driver)
         time.sleep(1)
-        checklist = [u'365',u'WPS',u'目标',u'金山']
+        checklist = [u'365',u'WPS',u'目标',u'金山',u'绿盟']
         for i in range(1,len(checklist)+1):
             window_2 = self.driver.current_window_handle
-            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[2]/div/div[%d]/a'%(i+1)).click()
+            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[1]/div/div[%d]/a'%(i+1)).click()
             time.sleep(2)
             self.comme.WinMove(window_2,self.driver)
             text1 = self.driver.find_element_by_class_name('BlockName').text
@@ -134,11 +134,11 @@ class OtherTest(unittest.TestCase):
     def test_about(self):
         u"""关于我们"""
         self.setup_get()
-        self.comme.roll('//div[@class="bottom-info-items-div"]/div[3]/div/div[1]',self.driver)
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[2]/div/div[1]',self.driver)
         time.sleep(1)
         checklist = [u'海航',u'协议',u'营销']
         for i in range(1,len(checklist)+1):
-            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[3]/div/div[%d]/a'%(i+1)).click()
+            self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[2]/div/div[%d]/a'%(i+1)).click()
             time.sleep(2)
             if self.comme.isElementExist('//div[@class="usInfo"]/p',self.driver):
                 text = self.driver.find_element_by_xpath('//div[@class="usInfo"]/p').text
@@ -158,10 +158,10 @@ class OtherTest(unittest.TestCase):
     def test_down_blog(self):
         u"""页脚博客与进入博客中的各个刷选标签"""
         self.setup_get()
-        self.comme.roll('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]',self.driver)
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[3]/div/div[1]',self.driver)
         time.sleep(1)
         #点击进入博客
-        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[2]/a').click()
+        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[3]/div/div[2]/a').click()
         #点击展开标识
         self.driver.find_element_by_xpath('//div[@class="ant-anchor"]/div[2]/a').click()
         #点击标签
@@ -186,5 +186,14 @@ class OtherTest(unittest.TestCase):
         self.add_img()
         self.log.info(u'验证完成')
 
+    def test_contact_us(self):
+        u'''页脚联系我们'''
+        self.setup_get()
+        self.comme.roll('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]',self.driver)
+        #点击支持邮箱
+        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[3]/a').click()
+        text = u'测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
+        self.comme.contact_us(3,u'测试厂商',u'测试用户',u'13434345656',text,self.driver,u'test@test.com')
+        time.sleep(2)
 if __name__ == '__main__':
     unittest.main()
