@@ -66,6 +66,7 @@ class OlinePlay(unittest.TestCase):
             self.assertIn(check[i-1],title)
             self.add_img()
             self.driver.close()
+            time.sleep(1)
             self.driver.switch_to.window(window_2)
 
     def test_onlineplay(self):
@@ -76,7 +77,7 @@ class OlinePlay(unittest.TestCase):
         checklist = [u'法大大',u'云势',u'并行',u'绿盟']
         self.step(checklist)
 
-        checklist_last = [u'华为',u'腾讯',u'今目标',u'金山',u'云集市']
+        checklist_last = [u'华为',u'腾讯',u'今目标',u'金山']
         self.step_last(checklist_last)
 
 if __name__ == '__main__':
