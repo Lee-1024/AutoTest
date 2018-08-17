@@ -7,6 +7,7 @@ parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
 sys.path.append(parentUrl)
 from selenium import webdriver
 import unittest,time,random
+import urllib
 from Common.Common import CommonMethod
 from Common.Logger import Log
 
@@ -71,7 +72,7 @@ class OtherTest(unittest.TestCase):
             self.log.error(e)
 
         self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
-        self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
+        #self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
 
         #点击提交
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[2]/div/div/div/div/span/button').click()
@@ -195,5 +196,26 @@ class OtherTest(unittest.TestCase):
         text = u'测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
         self.comme.contact_us(3,u'测试厂商',u'测试用户',u'13434345656',text,self.driver,u'test@test.com')
         time.sleep(2)
+
+    def test_consult(self):
+        u'''咨询'''
+        self.setup_get()
+        self.comme.hover('//div[@class="customer-service-title-content-img"]/img',self.driver)
+        time.sleep(1)
+        window_2 = self.driver.current_window_handle
+        self.driver.find_element_by_class_name('customer-service-content-select-content-one').click()
+        time.sleep(3)
+        self.comme.WinMove(window_2,self.driver)
+        self.driver.find_element_by_id('msg').click()
+        self.driver.find_element_by_id('msg').send_keys(u'你好')
+        self.driver.find_element_by_xpath('//div[@class="online_btn"]/span').click()
+        time.sleep(0.5)
+        text = self.driver.find_element_by_xpath('//*[@id="chatContent"]/li[1]/li/div[2]').text
+        self.assertIn(u'你好',text)
+        time.sleep(3)
+        url = 'http://www.zxccc.net/am-mcs-web/ws/138/31d096dabe0933f576e04d6124f4b8f7/htmlfile?c=_jp.akwubcv'
+        a = urllib.urlopen(url).getcode()
+        self.log.info(a)
+
 if __name__ == '__main__':
     unittest.main()

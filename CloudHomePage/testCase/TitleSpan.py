@@ -49,7 +49,7 @@ class TitleSpan(unittest.TestCase):
             time.sleep(1)
             self.comme.hover('//div[@class="titleMain"]/div[3]/ul/li[2]/ul/li[%d]'%secondsort,self.driver)
             time.sleep(1)
-            self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/ul/li[3]/div/span[%d]'%h).click()
+            self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/ul/li[3]/div/div/div/span[%d]'%h).click()
             time.sleep(3)
             text = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
             self.assertIn(product[h-1],text)

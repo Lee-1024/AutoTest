@@ -74,10 +74,10 @@ class OlinePlay(unittest.TestCase):
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
-        checklist = [u'法大大',u'云势',u'并行',u'绿盟']
+        checklist = [u'云集市2',u'法大大',u'云势',u'并行']
         self.step(checklist)
 
-        checklist_last = [u'华为',u'腾讯',u'今目标',u'金山']
+        checklist_last = [u'绿盟',u'华为',u'腾讯',u'今目标',u'金山']
         self.step_last(checklist_last)
 
 if __name__ == '__main__':
