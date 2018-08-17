@@ -108,7 +108,7 @@ class Company(unittest.TestCase):
 
         self.wall_step(2,15)
 
-        self.wall_step(3,4)
+        self.wall_step(3,5)
 
 
     def test_company_contact_us(self):

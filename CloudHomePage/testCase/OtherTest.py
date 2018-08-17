@@ -203,17 +203,20 @@ class OtherTest(unittest.TestCase):
         self.comme.hover('//div[@class="customer-service-title-content-img"]/img',self.driver)
         time.sleep(1)
         window_2 = self.driver.current_window_handle
+        #点击在线客服
         self.driver.find_element_by_class_name('customer-service-content-select-content-one').click()
-        time.sleep(3)
+        time.sleep(1)
         self.comme.WinMove(window_2,self.driver)
+        #输入信息
         self.driver.find_element_by_id('msg').click()
         self.driver.find_element_by_id('msg').send_keys(u'你好')
+        #提交
         self.driver.find_element_by_xpath('//div[@class="online_btn"]/span').click()
         time.sleep(0.5)
         text = self.driver.find_element_by_xpath('//*[@id="chatContent"]/li[1]/li/div[2]').text
         self.assertIn(u'你好',text)
-        time.sleep(3)
-        url = 'http://www.zxccc.net/am-mcs-web/ws/138/31d096dabe0933f576e04d6124f4b8f7/htmlfile?c=_jp.akwubcv'
+        time.sleep(1)
+        url = 'http://www.zxccc.net/am-mcs-web/ws/288/31d096dabe0933f576e04d6124f4b8f7/websocket'
         a = urllib.urlopen(url).getcode()
         self.log.info(a)
 
