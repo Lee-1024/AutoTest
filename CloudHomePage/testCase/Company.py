@@ -108,7 +108,7 @@ class Company(unittest.TestCase):
 
         self.wall_step(2,15)
 
-        self.wall_step(3,5)
+        self.wall_step(3,6)
 
 
     def test_company_contact_us(self):
@@ -121,7 +121,7 @@ class Company(unittest.TestCase):
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="company-read-info-content"]/div[1]/div[3]/button').click()
         #填入信息并提交
-        self.comme.contact_us(2,u'厂商联系测试',u'厂商',u'15656567878',u'测试测试',self.driver,u'test@123.com')
+        self.comme.contact_us(u'厂商联系测试',u'厂商',u'15656567878',u'测试测试',self.driver,u'test@123.com')
         time.sleep(1)
 if __name__ == '__main__':
     unittest.main()

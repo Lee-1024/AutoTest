@@ -55,7 +55,7 @@ class CommonMethod():
         driver.execute_script("arguments[0].scrollIntoView();", target)
 
 
-    def contact_us(self,index,companyna,userna,tel,content,driver,email=""):
+    def contact_us(self,companyna,userna,tel,content,driver,index=1,email=""):
         """
         :param index: 选择第几个问题类型
         :param companyna: 公司名称
@@ -67,9 +67,10 @@ class CommonMethod():
         :return:联系我们的发送邮件测试方法
         """
         #点击问题类型并选择
-        driver.find_element_by_xpath('//*[@id="titleType"]/div/span').click()
-        time.sleep(1)
-        driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[%d]'%index).click()
+        if self.isElementExist('//*[@id="titleType"]/div/span',driver):
+            driver.find_element_by_xpath('//*[@id="titleType"]/div/span').click()
+            time.sleep(1)
+            driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[%d]'%index).click()
         #输入公司名称
         driver.find_element_by_id('companyName').send_keys(companyna)
         #输入联系人姓名
@@ -82,7 +83,10 @@ class CommonMethod():
         driver.find_element_by_id('content').send_keys(content)
         #点击提交
         time.sleep(0.5)
-        driver.find_element_by_xpath('//div[@class="contact-form-main-contact"]/div[7]/div/div/div/div/span/button').click()
+        if self.isElementExist('//div[@class="contact-form-main-contact"]/div[7]/div/div/div/div/span/button',driver):
+            driver.find_element_by_xpath('//div[@class="contact-form-main-contact"]/div[7]/div/div/div/div/span/button').click()
+        else:
+            driver.find_element_by_xpath('//div[@class="contact-form-main-contact"]/div[6]/div/div/div/div/span/button').click()
 
     def login(self,driver,moblie,code):
         driver.find_element_by_xpath('//div[@class="titleUserBtnGroup"]/div[1]').click()

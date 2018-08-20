@@ -116,7 +116,7 @@ class Product(unittest.TestCase):
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="library-product-main"]/div[3]/button').click()
         #填入邮件信息并发送
-        self.comme.contact_us(1,u'产品详情厂商',u'产品',u'13223233434',u'测试测试',self.driver)
+        self.comme.contact_us(u'产品详情厂商',u'产品',u'13223233434',u'测试测试',self.driver)
         time.sleep(1)
 
 

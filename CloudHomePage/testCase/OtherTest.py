@@ -137,7 +137,7 @@ class OtherTest(unittest.TestCase):
         self.setup_get()
         self.comme.roll('//div[@class="bottom-info-items-div"]/div[2]/div/div[1]',self.driver)
         time.sleep(1)
-        checklist = [u'海航',u'协议',u'营销']
+        checklist = [u'海航',u'协议']
         for i in range(1,len(checklist)+1):
             self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[2]/div/div[%d]/a'%(i+1)).click()
             time.sleep(2)
@@ -149,9 +149,9 @@ class OtherTest(unittest.TestCase):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
 
-            elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
-                text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
-                self.assertIn(checklist[i-1],text)
+            # elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
+            #     text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
+            #     self.assertIn(checklist[i-1],text)
 
             self.add_img()
             self.driver.back()
@@ -192,9 +192,9 @@ class OtherTest(unittest.TestCase):
         self.setup_get()
         self.comme.roll('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]',self.driver)
         #点击支持邮箱
-        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[3]/a').click()
+        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]').click()
         text = u'测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
-        self.comme.contact_us(3,u'测试厂商',u'测试用户',u'13434345656',text,self.driver,u'test@test.com')
+        self.comme.contact_us(u'测试厂商',u'测试用户',u'13434345656',text,self.driver,3,u'test@test.com')
         time.sleep(2)
 
     def test_consult(self):
