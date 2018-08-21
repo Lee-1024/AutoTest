@@ -49,7 +49,7 @@ class TitleSpan(unittest.TestCase):
             time.sleep(1)
             self.comme.hover('//div[@class="titleMain"]/div[3]/ul/li[2]/ul/li[%d]'%secondsort,self.driver)
             time.sleep(1)
-            self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/ul/li[3]/div/span[%d]'%h).click()
+            self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[3]/ul/li[3]/div/div/span[%d]'%h).click()
             time.sleep(3)
             text = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
             self.assertIn(product[h-1],text)
@@ -81,27 +81,27 @@ class TitleSpan(unittest.TestCase):
         self.driver.close()
         self.driver.switch_to.window(window_1)
 
-    def test_zsupport(self):
-        u"""支持"""
-        self.driver.get(self.comme.url)
-        self.driver.implicitly_wait(30)
-        self.driver.maximize_window()
-        self.driver.find_element_by_class_name('apsClose').click()
-        time.sleep(3)
-        self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[5]/span').click()
-        self.add_img()
-        text = self.driver.find_element_by_xpath('//*[@class="supportList"]/h5/a').text
-        self.assertIn(u'营销',text)
-
-        texts = [u'营销',u'推荐',u'付款',u'佣金',u'配置',u'查看',u'链接',u'报告']
-        #循环点击内容
-        for i in range(0, 8):
-            self.driver.find_elements_by_class_name('supportList')[i].click()
-            time.sleep(2)
-            text =self.driver.find_element_by_xpath('//*[@class="supportTit"]').text
-            self.assertIn(texts[i],text)
-            self.add_img()
-            self.driver.back()
+    # def test_zsupport(self):
+    #     u"""支持"""
+    #     self.driver.get(self.comme.url)
+    #     self.driver.implicitly_wait(30)
+    #     self.driver.maximize_window()
+    #     self.driver.find_element_by_class_name('apsClose').click()
+    #     time.sleep(3)
+    #     self.driver.find_element_by_xpath('//div[@class="titleMain"]/ul/li[5]/span').click()
+    #     self.add_img()
+    #     text = self.driver.find_element_by_xpath('//*[@class="supportList"]/h5/a').text
+    #     self.assertIn(u'营销',text)
+    #
+    #     texts = [u'营销',u'推荐',u'付款',u'佣金',u'配置',u'查看',u'链接',u'报告']
+    #     #循环点击内容
+    #     for i in range(0, 8):
+    #         self.driver.find_elements_by_class_name('supportList')[i].click()
+    #         time.sleep(2)
+    #         text =self.driver.find_element_by_xpath('//*[@class="supportTit"]').text
+    #         self.assertIn(texts[i],text)
+    #         self.add_img()
+    #         self.driver.back()
 
     def test_zpartner(self):
         u"""成为合作伙伴"""
@@ -166,7 +166,8 @@ class TitleSpan(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="policySupport"]/label[1]/span[1]/input').click()#政策支撑
         self.driver.find_element_by_xpath('//*[@id="soleDuty"]/label[1]/span[1]/input').click()#销售团队
         self.driver.find_element_by_xpath('//*[@id="edxclusivedistribution"]/label[1]/span[1]/input').click()#转售协议
-        self.driver.find_element_by_xpath('//*[@id="cooperativePartner"]/label[1]/span[1]/input').click()#合作伙伴
+        #self.driver.find_element_by_xpath('//*[@id="cooperativePartner"]/label[1]/span[1]/input').click()#合作伙伴
+        self.driver.find_element_by_id('cooperativePartner').send_keys('10000')
         self.driver.find_element_by_xpath('//*[@id="authorizationCertification"]/label[1]/span[1]/input').click()#销售产品
         self.driver.find_element_by_xpath('//*[@id="monthSubscribe"]/label[1]/span[1]/input').click()#订阅选项
 

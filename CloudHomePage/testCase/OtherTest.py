@@ -7,6 +7,7 @@ parentUrl = os.path.abspath(os.path.join(currentUrl, os.pardir))
 sys.path.append(parentUrl)
 from selenium import webdriver
 import unittest,time,random
+import urllib
 from Common.Common import CommonMethod
 from Common.Logger import Log
 
@@ -71,7 +72,7 @@ class OtherTest(unittest.TestCase):
             self.log.error(e)
 
         self.driver.find_element_by_id('contactTel').send_keys("13223234545")#联系人电话
-        self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
+        #self.driver.find_element_by_id('partnerNumber').send_keys('123321')#微软合作伙伴编号
 
         #点击提交
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[2]/div/div/div/div/span/button').click()
@@ -105,7 +106,8 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="policySupport"]/label[1]/span[1]/input').click()#政策支撑
         self.driver.find_element_by_xpath('//*[@id="soleDuty"]/label[1]/span[1]/input').click()#销售团队
         self.driver.find_element_by_xpath('//*[@id="edxclusivedistribution"]/label[1]/span[1]/input').click()#转售协议
-        self.driver.find_element_by_xpath('//*[@id="cooperativePartner"]/label[1]/span[1]/input').click()#合作伙伴
+        #self.driver.find_element_by_xpath('//*[@id="cooperativePartner"]/label[1]/span[1]/input').click()#合作伙伴
+        self.driver.find_element_by_id('cooperativePartner').send_keys('10000')
         self.driver.find_element_by_xpath('//*[@id="authorizationCertification"]/label[1]/span[1]/input').click()#销售产品
         self.driver.find_element_by_xpath('//*[@id="monthSubscribe"]/label[1]/span[1]/input').click()#订阅选项
 
@@ -136,7 +138,7 @@ class OtherTest(unittest.TestCase):
         self.setup_get()
         self.comme.roll('//div[@class="bottom-info-items-div"]/div[2]/div/div[1]',self.driver)
         time.sleep(1)
-        checklist = [u'海航',u'协议',u'营销']
+        checklist = [u'海航',u'协议']
         for i in range(1,len(checklist)+1):
             self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[2]/div/div[%d]/a'%(i+1)).click()
             time.sleep(2)
@@ -148,9 +150,9 @@ class OtherTest(unittest.TestCase):
                 text = self.driver.find_element_by_xpath('//*[@id="userAgreement"]/div[1]/h2').text
                 self.assertIn(checklist[i-1],text)
 
-            elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
-                text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
-                self.assertIn(checklist[i-1],text)
+            # elif self.comme.isElementExist('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a',self.driver):
+            #     text = self.driver.find_element_by_xpath('//div[@class="main-div-container"]/div[2]/div/div/div[1]/h5/a').text
+            #     self.assertIn(checklist[i-1],text)
 
             self.add_img()
             self.driver.back()
@@ -191,9 +193,33 @@ class OtherTest(unittest.TestCase):
         self.setup_get()
         self.comme.roll('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]',self.driver)
         #点击支持邮箱
-        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[3]/a').click()
+        self.driver.find_element_by_xpath('//div[@class="bottom-info-items-div"]/div[4]/div/div[1]').click()
         text = u'测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
-        self.comme.contact_us(3,u'测试厂商',u'测试用户',u'13434345656',text,self.driver,u'test@test.com')
+        self.comme.contact_us(u'测试厂商',u'测试用户',u'13434345656',text,self.driver,3,u'test@test.com')
         time.sleep(2)
+
+    def test_consult(self):
+        u'''咨询'''
+        self.setup_get()
+        self.comme.hover('//div[@class="customer-service-title-content-img"]/img',self.driver)
+        time.sleep(1)
+        window_2 = self.driver.current_window_handle
+        #点击在线客服
+        self.driver.find_element_by_class_name('customer-service-content-select-content-one').click()
+        time.sleep(1)
+        self.comme.WinMove(window_2,self.driver)
+        #输入信息
+        self.driver.find_element_by_id('msg').click()
+        self.driver.find_element_by_id('msg').send_keys(u'你好')
+        #提交
+        self.driver.find_element_by_xpath('//div[@class="online_btn"]/span').click()
+        time.sleep(0.5)
+        text = self.driver.find_element_by_xpath('//*[@id="chatContent"]/li[1]/li/div[2]').text
+        self.assertIn(u'你好',text)
+        time.sleep(1)
+        url = 'http://www.zxccc.net/am-mcs-web/ws/288/31d096dabe0933f576e04d6124f4b8f7/websocket'
+        a = urllib.urlopen(url).getcode()
+        self.log.info(a)
+
 if __name__ == '__main__':
     unittest.main()
