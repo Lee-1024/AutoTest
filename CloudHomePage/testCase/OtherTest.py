@@ -219,7 +219,10 @@ class OtherTest(unittest.TestCase):
         time.sleep(1)
         url = 'http://www.zxccc.net/am-mcs-web/ws/288/31d096dabe0933f576e04d6124f4b8f7/websocket'
         a = urllib.urlopen(url).getcode()
+        self.assertEquals(200,a)
         self.log.info(a)
+        self.driver.close()
+        self.driver.switch_to.window(window_2)
 
 if __name__ == '__main__':
     unittest.main()
