@@ -24,10 +24,11 @@ class PersonalCenter(unittest.TestCase):
         return True
 
     def hover(self):
-        self.driver.find_element_by_xpath('//div[@class="titleUserPic"]/img').click()
-        ele = self.driver.find_element_by_xpath('//div[@class="titleUserPic"]/img')
-        time.sleep(2)
-        ActionChains(self.driver).move_to_element(ele).perform()
+        ele = self.driver.find_element_by_xpath('//div[@class="titleMain"]/div[2]/div[1]/img')
+        js = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');" \
+             "evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} " \
+             "else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}"
+        self.driver.execute_script(js,ele)
         time.sleep(2)
         self.driver.find_elements_by_class_name('titleUserMenuItem')[0].click()
 
@@ -39,20 +40,14 @@ class PersonalCenter(unittest.TestCase):
         #login
         login = LogiAndExit()
         login.login(self.driver,'17600591024','l123456')
-        time.sleep(5)
+        time.sleep(3)
         firsrn = self.driver.find_element_by_xpath('//div[@class="titleUserBtn clickable "]').text
         self.assertIn('HNA',firsrn)
 
         time.sleep(2)
-        self.driver.find_element_by_class_name('titleMain').click()
-        ele = self.driver.find_element_by_class_name('titleMain')
-        ActionChains(self.driver).move_to_element(ele).perform()
-        time.sleep(2)
 
         #hover
         self.hover()
-        time.sleep(1)
-        self.add_img()
 
         #modified data
         self.driver.find_element_by_class_name('ant-btn').click()

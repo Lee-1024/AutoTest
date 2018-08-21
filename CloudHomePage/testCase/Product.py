@@ -38,7 +38,7 @@ class Product(unittest.TestCase):
         :param check_list: 传入检查点，列表或者元组
         :return: 云产品区操作方法，无返回值
         """
-        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]'%(ele1+1,ele2)).click()
+        self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]/div'%(ele1+1,ele2)).click()
         time.sleep(2)
         for i in range(1,len(check_list)+1):
             self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[3]/div/div/div[%d]'%(ele1+1,i)).click()
@@ -57,7 +57,7 @@ class Product(unittest.TestCase):
                 self.assertIn(check_list[i-1],text3)
                 self.log.info(u'服务检查')
             self.driver.back()
-            self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]'%(ele1+1,ele2)).click()
+            self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]/div'%(ele1+1,ele2)).click()
             time.sleep(2)
 
     def test_Product_1(self):
@@ -97,10 +97,11 @@ class Product(unittest.TestCase):
         self.driver.find_element_by_class_name('apsClose').click()
 
         #新技术
-        checks=(u'拓尔思')
+        checks=(u'拓尔思',)
         self.step(2,1,checks)
 
         #服务
+
         checks = (u'专业',u'咨询',u'实施',u'备份',u'运维',u'云技')
         self.step(2,2,checks)
 

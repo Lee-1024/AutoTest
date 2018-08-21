@@ -45,6 +45,7 @@ class OlinePlay(unittest.TestCase):
             self.assertIn(check[i-1],title)
             self.driver.close()
             self.driver.switch_to.window(window_2)
+            self.comme.roll('//div[@class="on-line-play-content"]/div/div[4]/div[2]/div/span',self.driver)
 
     def step_last(self,check):
         """
