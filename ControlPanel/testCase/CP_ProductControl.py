@@ -47,7 +47,7 @@ class ProductControl(unittest.TestCase):
         ActionChains(self.driver).send_keys(text).perform()
 
     def test_product(self):
-
+        u'''产品管理'''
         self.setup_get()
         #点击云产品
         self.driver.find_element_by_xpath('//div[@class="side-list-root"]/nav/div[4]').click()
@@ -103,7 +103,6 @@ class ProductControl(unittest.TestCase):
         time.sleep(5)
         self.comme.WinMove(window_1,self.driver)
 
-
         text2 = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
 
         self.assertIn(u'详情',text2)
@@ -115,12 +114,9 @@ class ProductControl(unittest.TestCase):
             self.log.info(text1)
             self.add_img()
 
-
         self.driver.close()
 
         self.driver.switch_to.window(window_1)
-
-        time.sleep(10)
 
 
 if __name__ == '__main__':
