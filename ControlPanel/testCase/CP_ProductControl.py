@@ -38,11 +38,9 @@ class ProductControl(unittest.TestCase):
         self.driver.maximize_window()
 
     def input_text(self,index,text):
-        self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div[%d]/div/h1/span/span'%index).click()
-
-        ActionChains(self.driver).send_keys(Keys.RIGHT,Keys.RIGHT).perform()
-
-        ActionChains(self.driver).send_keys(Keys.ENTER).perform()
+        self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[%d]'%index).click()
+        time.sleep(0.5)
+        self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div/div').click()
         time.sleep(1)
         ActionChains(self.driver).send_keys(text).perform()
 
@@ -72,22 +70,24 @@ class ProductControl(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[4]/div[2]/div/div/span').click()
         self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
         time.sleep(0.5)
-        #产品信息
-        self.input_text(1,u'测试')
-        #产品功能
-        self.input_text(3,u'还是测试')
-        #业务场景
-        self.input_text(5,u'又是个测试')
-        #技术参数
-        self.input_text(7,u'这是个测试')
-        #产品优势
-        self.input_text(9,u'这还是测试')
-        #客户案例
-        self.input_text(11,u'接着测试')
-        #视频演示
-        self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div[13]/div/h1/span/span').click()
-        ActionChains(self.driver).send_keys(Keys.RIGHT,Keys.RIGHT).perform()
-        ActionChains(self.driver).send_keys(Keys.ENTER).perform()
+
+        self.input_text(1,u'产品信息 哈哈哈哈哈')
+
+        self.input_text(2,u'产品功能 嘿嘿嘿嘿嘿')
+
+        self.input_text(3,u'业务场景 呵呵呵呵呵')
+
+        self.input_text(4,u'技术参数 233333333')
+
+        self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
+        time.sleep(0.5)
+        self.input_text(5,u'产品优势 233333333')
+
+        self.input_text(6,u'客户案例 233333333')
+
+        self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[7]').click()
+        time.sleep(0.5)
+        self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div/div').click()
         self.driver.find_element_by_xpath('//div[@class="RE-toolbar-root"]/span[8]').click()
         time.sleep(0.5)
         self.driver.find_element_by_xpath('//div[@class="ant-row"]/div/div/label[3]/span[2]').click()
@@ -96,8 +96,9 @@ class ProductControl(unittest.TestCase):
         time.sleep(0.5)
         self.driver.find_element_by_xpath('//div[@class="RE-modal-root"]/form/div[2]/div/div/span/button').click()
         time.sleep(3.5)
-        #常见问题
-        self.input_text(16,u'不断的测试')
+
+        self.input_text(8,u'常见问题 233333333')
+
         window_1 = self.driver.current_window_handle
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/header/div/button[3]/span[1]').click()
         time.sleep(5)
