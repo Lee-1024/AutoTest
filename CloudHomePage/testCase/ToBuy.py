@@ -126,3 +126,7 @@ class ToBuy(unittest.TestCase):
         self.assertIn(u'绿盟',text1)
         self.driver.close()
         self.driver.switch_to.window(window_1)
+
+
+if __name__ == '__main__':
+    unittest.main()

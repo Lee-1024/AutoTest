@@ -35,7 +35,7 @@ class Product(unittest.TestCase):
         """
         :param ele1: 元素在第几行
         :param ele2: 元素是该行的第几个
-        :param check_list: 传入检查点，列表或者元组
+        :param check_list: 传入检查点，列表或者元组,ps：最好别传元组，因为要是检查项就一个少写一个逗号就出错了。。。被坑了两次了！
         :return: 云产品区操作方法，无返回值
         """
         self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]/div'%(ele1+1,ele2)).click()

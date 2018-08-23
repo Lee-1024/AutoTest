@@ -45,6 +45,18 @@ class CommonMethod():
         elem = driver.find_element_by_xpath(elem)
         ActionChains(driver).move_to_element(elem).perform()
 
+    def hover_js(self,elem,driver):
+        """
+        :param elem: 要悬停元素的xpath
+        :param driver:输入驱动实例
+        :return:使用js做悬停，上一种悬停失败时可以使用
+        """
+        elem = driver.find_element_by_xpath(elem)
+        js = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');" \
+             "evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} " \
+             "else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}"
+        driver.execute_script(js,elem)
+
     def roll(self,elem,driver):
         """
         :param elem: 需要滚动到的位置的XPATH
