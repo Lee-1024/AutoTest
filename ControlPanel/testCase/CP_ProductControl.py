@@ -38,6 +38,11 @@ class ProductControl(unittest.TestCase):
         self.driver.maximize_window()
 
     def input_text(self,index,text):
+        '''
+        :param index: 第几个标签
+        :param text:输入的内容
+        :return:点击标签并输入内容方法
+        '''
         self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[%d]'%index).click()
         time.sleep(0.5)
         self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div/div').click()

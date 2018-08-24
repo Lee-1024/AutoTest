@@ -73,7 +73,7 @@ class CompanyControl(unittest.TestCase):
         time.sleep(2)
         text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
         self.assertIn(u'厂商',text1)
-
+        self.add_img()
         time.sleep(3)
 
 
