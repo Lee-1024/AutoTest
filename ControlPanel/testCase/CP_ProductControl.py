@@ -8,7 +8,7 @@ sys.path.append(parentUrl)
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-import unittest,time,random
+import unittest,time,uuid
 import urllib
 from Common.Common import CommonMethod
 from Common.Logger import Log
@@ -38,6 +38,11 @@ class ProductControl(unittest.TestCase):
         self.driver.maximize_window()
 
     def input_text(self,index,text):
+        '''
+        :param index: 第几个标签
+        :param text:输入的内容
+        :return:点击标签并输入内容方法
+        '''
         self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[%d]'%index).click()
         time.sleep(0.5)
         self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div/div').click()
@@ -46,6 +51,7 @@ class ProductControl(unittest.TestCase):
 
     def test_product(self):
         u'''产品管理'''
+        productname = u'测试产品详情-'+str(uuid.uuid1())[0:8]
         self.setup_get()
         #点击云产品
         self.driver.find_element_by_xpath('//div[@class="side-list-root"]/nav/div[4]').click()
@@ -57,7 +63,7 @@ class ProductControl(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="prod-container"]/div[2]/button/span[1]').click()
         time.sleep(0.5)
         #输入产品名称
-        self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[1]/div[2]/input').send_keys(u'测试产品详情')
+        self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[1]/div[2]/input').send_keys(productname)
         time.sleep(0.5)
         #输入产品描述
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[2]/div[2]/textarea').send_keys(u'测试产品详情描述')

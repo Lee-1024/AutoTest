@@ -8,12 +8,12 @@ sys.path.append(parentUrl)
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-import unittest,time,random
+import unittest,time,uuid
 import urllib
 from Common.Common import CommonMethod
 from Common.Logger import Log
 
-class ProductControl(unittest.TestCase):
+class CompanyControl(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -40,6 +40,7 @@ class ProductControl(unittest.TestCase):
 
     def test_product(self):
         u'''公司管理'''
+        companyname = u'测试厂商-'+str(uuid.uuid1())[0:8]
         self.setup_get()
         #点击云产品
         self.driver.find_element_by_xpath('//div[@class="side-list-root"]/nav/div[4]').click()
@@ -51,7 +52,7 @@ class ProductControl(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="root-main-view"]/div/div[1]/div/button').click()
         time.sleep(0.5)
         #输入厂商名称
-        self.driver.find_element_by_xpath('//div[@class="companyCon"]/p[1]/label/input').send_keys(u'测试厂商')
+        self.driver.find_element_by_xpath('//div[@class="companyCon"]/p[1]/label/input').send_keys(companyname)
         time.sleep(0.5)
         #输入官网地址
         self.driver.find_element_by_xpath('//div[@class="companyCon"]/p[2]/label/input').send_keys(u'www.baidu.com')
@@ -72,7 +73,7 @@ class ProductControl(unittest.TestCase):
         time.sleep(2)
         text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
         self.assertIn(u'厂商',text1)
-
+        self.add_img()
         time.sleep(3)
 
 
