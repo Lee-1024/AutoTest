@@ -86,14 +86,15 @@ class ProductControl(unittest.TestCase):
         time.sleep(0.5)
         self.input_text(3,u'业务场景 呵呵呵呵呵')
         time.sleep(0.5)
+        self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
         self.input_text(4,u'技术参数 233333333')
         time.sleep(0.5)
-        self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
+        #self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
         time.sleep(0.5)
         self.input_text(5,u'产品优势 233333333')
         time.sleep(0.5)
         self.input_text(6,u'客户案例 233333333')
-
+        self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
         self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[7]').click()
         time.sleep(0.5)
         self.driver.find_element_by_xpath('//div[@class="DraftEditor-editorContainer"]/div/div/div/div').click()
@@ -103,6 +104,7 @@ class ProductControl(unittest.TestCase):
         time.sleep(0.5)
         self.driver.find_element_by_id('url').send_keys('https://vendor-video.oss-cn-beijing.aliyuncs.com/5-erp.mp4')
         time.sleep(0.5)
+
         self.driver.find_element_by_xpath('//div[@class="RE-modal-root"]/form/div[2]/div/div/span/button').click()
         time.sleep(3.5)
 
