@@ -3,7 +3,7 @@ __author__ = 'Lee'
 # coding:utf-8
 import logging,time,os
 # 这个是日志保存本地的路径
-log_path = "D:/AutoTest/Log"
+log_path = "C:/AutoTestNew/AutoTest/Log"
 class Log:
     def __init__(self):
         # 文件的命名
