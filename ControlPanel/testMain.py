@@ -14,7 +14,7 @@ testunit = unittest.TestSuite()
 testunit.addTest(unittest.makeSuite(CP_ProductControl.ProductControl))
 testunit.addTest(unittest.makeSuite(CP_CompanyControl.CompanyControl))
 #定义一个报告存放路径
-filepath = "D:\\AutoTest\\ControlPanel\\Report\\result"+now+".html"
+filepath = "C:\\AutoTestNew\\AutoTest\\ControlPanel\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
 #定义测试报告
 runner = HTMLTestRunner5.HTMLTestRunner(title="控制面板测试报告", description="控制面板相关功能测试", stream=fp, verbosity=2, retry=1, save_last_try=True)
