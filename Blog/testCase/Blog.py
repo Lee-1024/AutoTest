@@ -7,7 +7,7 @@ from Common import LogiAndExit
 
 class PublishBlog(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('C:\Python27\chromedriver.exe')
         #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.base_url = "https://stg.hnacloudmarket.com"

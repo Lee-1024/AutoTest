@@ -8,7 +8,7 @@ class PublishBlog(unittest.TestCase):
     def setUp(self):
         # display = Display(visible=0,size=(800,600))
         # display.start()
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('C:\Python27\chromedriver.exe')
         self.driver.implicitly_wait(30)
         self.base_url = "https://community.stg.hnacloudmarket.com"
         self.imgs = []
