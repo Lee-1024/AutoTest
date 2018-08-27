@@ -11,7 +11,6 @@ class PublishBlog(unittest.TestCase):
         #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.base_url = "https://stg.hnacloudmarket.com"
-        #self.base_url = "https://10.125.1.236"
         self.imgs = []
 
     def add_img(self):
