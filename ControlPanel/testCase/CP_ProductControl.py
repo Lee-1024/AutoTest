@@ -81,17 +81,17 @@ class ProductControl(unittest.TestCase):
         time.sleep(0.5)
 
         self.input_text(1,u'产品信息 哈哈哈哈哈')
-
+        time.sleep(0.5)
         self.input_text(2,u'产品功能 嘿嘿嘿嘿嘿')
-
+        time.sleep(0.5)
         self.input_text(3,u'业务场景 呵呵呵呵呵')
-
+        time.sleep(0.5)
         self.input_text(4,u'技术参数 233333333')
-
+        time.sleep(0.5)
         self.driver.find_element_by_class_name('ant-tabs-tab-next-icon').click()
         time.sleep(0.5)
         self.input_text(5,u'产品优势 233333333')
-
+        time.sleep(0.5)
         self.input_text(6,u'客户案例 233333333')
 
         self.driver.find_element_by_xpath('//div[@class="ant-tabs-nav-scroll"]/div/div[1]/div[7]').click()
