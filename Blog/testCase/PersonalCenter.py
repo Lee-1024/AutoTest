@@ -11,6 +11,10 @@ from Common import LogiAndExit
 class PersonalCenter(unittest.TestCase):
 
     def setUp(self):
+        options = webdriver.ChromeOptions()
+        options.binary_location = "C:\\Users\\amallayev\\AppData\\Local\\Google\Chrome\\Application\\chrome.exe"
+        chrome_driver_binary = "C:\\Python27\\chromedriver.exe"
+        self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
         self.driver = webdriver.Chrome('C:\\Python27\\chromedriver.exe')
         #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)

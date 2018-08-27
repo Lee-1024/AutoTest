@@ -7,7 +7,10 @@ from Common import LogiAndExit
 
 class PublishBlog(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome('C:\\Python27\\chromedriver.exe')
+        options = webdriver.ChromeOptions()
+        options.binary_location = "C:\\Users\\amallayev\\AppData\\Local\\Google\Chrome\\Application\\chrome.exe"
+        chrome_driver_binary = "C:\\Python27\\chromedriver.exe"
+        self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
         #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.base_url = "https://stg.hnacloudmarket.com"
