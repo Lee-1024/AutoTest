@@ -61,7 +61,7 @@ class CompanyControl(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="companyCon"]/p[2]/label/input').send_keys(u'www.baidu.com')
         time.sleep(0.5)
         #上传图片
-        self.driver.find_element_by_xpath('//div[@class="uploadCon"]/input[2]').send_keys('C:\\Users\\Bill\\Desktop\\google.jpg')
+        self.driver.find_element_by_xpath('//div[@class="uploadCon"]/input[2]').send_keys('C:\\AutoTest_tools\\google.jpg')
         time.sleep(0.5)
         #输入厂商描述
         self.driver.find_element_by_xpath('//div[@class="companyCon"]/p[4]/label/textarea').send_keys(u'厂商描述')

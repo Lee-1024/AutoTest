@@ -73,7 +73,7 @@ class ProductControl(unittest.TestCase):
         time.sleep(0.5)
         #上传产品logo
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[3]/div[2]/span/div[1]/span/input').send_keys(
-            'C:\\Users\\Bill\\Desktop\\google.jpg')
+            'C:\\AutoTest_tools\\google.jpg')
         time.sleep(0.5)
         #选择所属公司
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/div/div[4]/div[2]/div/div/span').click()
