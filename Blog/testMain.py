@@ -16,7 +16,7 @@ testunit.addTest(unittest.makeSuite(Blog.PublishBlog))
 testunit.addTest(unittest.makeSuite(PersonalCenter.PersonalCenter))
 
 #定义一个报告存放路径
-filepath = "D:\\AutoTest\\Blog\\Report\\result"+now+".html"
+filepath = "C:\\AutoTestNew\\AutoTest\\Blog\Report\\result"+now+".html"
 fp = file(filepath,"wb")
 #定义测试报告
 runner = HTMLTestRunner5.HTMLTestRunner(title="博客与个人中心测试报告", description="主流程测试报告", stream=fp, verbosity=2, retry=1, save_last_try=True)
