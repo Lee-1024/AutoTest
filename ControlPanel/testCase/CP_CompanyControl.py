@@ -41,7 +41,7 @@ class CompanyControl(unittest.TestCase):
         self.driver.maximize_window()
 
 
-    def test_product(self):
+    def test_company(self):
         u'''公司管理'''
         companyname = u'测试厂商-'+str(uuid.uuid1())[0:8]
         self.setup_get()
