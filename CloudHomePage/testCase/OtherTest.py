@@ -51,7 +51,7 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[4]/button').click()
         #--填写信息
         self.driver.find_element_by_id('userName').send_keys('TESTER@test.com') #用户名
-        self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
+        self.driver.find_element_by_id("companyName").send_keys(u'测试邮件，请忽略')#公司名称
         #公司规模
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[3]/div/div/div[2]/div/span/div/div/span').click()
         time.sleep(2)
@@ -65,7 +65,7 @@ class OtherTest(unittest.TestCase):
             self.log.error(e)
 
         self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
-        self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
+        self.driver.find_element_by_id('contactName').send_keys(u'忽略')#联系人姓名
         #联系人职务
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[7]/div/div/div[2]/div/span/div/div/span').click()
         time.sleep(2)
@@ -87,8 +87,8 @@ class OtherTest(unittest.TestCase):
         self.comme.roll('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[1]',self.driver)
 
         self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[8]/div/div/div[2]/div[4]/button').click()
-        self.driver.find_element_by_id('companyName').send_keys('Company') #公司名称
-        self.driver.find_element_by_id('userName').send_keys('Tester') #联系人姓名
+        self.driver.find_element_by_id('companyName').send_keys(u'测试邮件，请忽略') #公司名称
+        self.driver.find_element_by_id('userName').send_keys(u'忽略') #联系人姓名
         self.driver.find_element_by_id('userPhone').send_keys('13434344545') #联系人电话
         self.driver.find_element_by_id('userEmail').send_keys('Tester@123.com') #电子邮箱
 

@@ -121,7 +121,7 @@ class TitleSpan(unittest.TestCase):
         self.assertIn(u'代理',text)
 
         self.driver.find_element_by_id('userName').send_keys('TESTER@test.com') #用户名
-        self.driver.find_element_by_id("companyName").send_keys('CompanyName')#公司名称
+        self.driver.find_element_by_id("companyName").send_keys(u'测试邮件，请忽略')#公司名称
         #公司规模
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[3]/div/div/div[2]/div/span/div/div/span').click()
         self.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/ul/li[1]').click()
@@ -130,7 +130,7 @@ class TitleSpan(unittest.TestCase):
         self.driver.find_element_by_xpath('/html/body/div[3]/div/div/div/ul/li[1]').click()
 
         self.driver.find_element_by_id('companyTel').send_keys('13737374646')#公司电话
-        self.driver.find_element_by_id('contactName').send_keys('Tester')#联系人姓名
+        self.driver.find_element_by_id('contactName').send_keys(u'忽略')#联系人姓名
         #联系人职务
         self.driver.find_element_by_xpath('//div[@class="contact-form-content"]/form/div[1]/div[7]/div/div/div[2]/div/span/div/div/span').click()
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/ul/li[1]').click()
@@ -147,8 +147,8 @@ class TitleSpan(unittest.TestCase):
         self.comme.hover('//div[@class="titleMain"]/ul/li[4]/span',self.driver)
         time.sleep(1)
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div[2]/ul/li[2]/ul/li/a').click()
-        self.driver.find_element_by_id('companyName').send_keys('Company') #公司名称
-        self.driver.find_element_by_id('userName').send_keys('Tester') #联系人姓名
+        self.driver.find_element_by_id('companyName').send_keys(u'测试邮件请忽略') #公司名称
+        self.driver.find_element_by_id('userName').send_keys(u'忽略') #联系人姓名
         self.driver.find_element_by_id('userPhone').send_keys('13434344545') #联系人电话
         self.driver.find_element_by_id('userEmail').send_keys('Tester@123.com') #电子邮箱
 

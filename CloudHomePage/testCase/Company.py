@@ -71,6 +71,7 @@ class Company(unittest.TestCase):
         self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
         self.driver.find_element_by_xpath('//div[@class="company-prefecture-content-title-div"]/div[2]/button').click()
         self.add_img()
+        time.sleep(0.5)
         text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
         self.assertIn(u'金山',text1)
         self.driver.back()
@@ -96,7 +97,7 @@ class Company(unittest.TestCase):
         self.comme.roll('//div[@class="company-prefecture-title"]',self.driver)
         for i in range(1,9):
             self.driver.find_element_by_xpath('//div[@class="company-prefecture-two-content"]/div[%d]'%i).click()
-            time.sleep(0.5)
+            time.sleep(0.8)
             self.add_img()
             text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
             self.assertIn(checklist[i-1],text1)
