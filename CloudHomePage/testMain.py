@@ -17,8 +17,8 @@ testunit = unittest.TestSuite()
 #testunit.addTest(unittest.makeSuite(OnlinePlay.OlinePlay))
 #testunit.addTest(unittest.makeSuite(Product.Product))
 #testunit.addTest(unittest.makeSuite(Company.Company))
-testunit.addTest(unittest.makeSuite(ToBuy.ToBuy))
-#testunit.addTest(unittest.makeSuite(OtherTest.OtherTest))
+#testunit.addTest(unittest.makeSuite(ToBuy.ToBuy))
+testunit.addTest(unittest.makeSuite(OtherTest.OtherTest))
 #定义一个报告存放路径
 filepath = "C:\\AutoTestNew\\AutoTest\\CloudHomePage\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
