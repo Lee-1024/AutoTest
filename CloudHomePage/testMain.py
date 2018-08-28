@@ -20,7 +20,7 @@ testunit.addTest(unittest.makeSuite(Company.Company))
 testunit.addTest(unittest.makeSuite(ToBuy.ToBuy))
 testunit.addTest(unittest.makeSuite(OtherTest.OtherTest))
 #定义一个报告存放路径
-filepath = "D:\\AutoTest\\CloudHomePage\\Report\\result"+now+".html"
+filepath = "C:\\AutoTestNew\\AutoTest\\CloudHomePage\\Report\\result"+now+".html"
 fp = file(filepath,"wb")
 #定义测试报告
 runner = HTMLTestRunner5.HTMLTestRunner(title="主页测试报告", description="主页链接跳转测试", stream=fp, verbosity=2, retry=1, save_last_try=True)
