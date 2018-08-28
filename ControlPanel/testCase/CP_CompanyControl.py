@@ -73,7 +73,7 @@ class CompanyControl(unittest.TestCase):
         text = self.driver.find_element_by_xpath('//div[@class="root-main-view"]/div/table/tbody/tr[1]/td[1]').text
         #通过ID打开该厂商链接
         self.driver.get('https://stg.hnacloudmarket.com/cloudLibrary/company/%s'%text)
-        time.sleep(2)
+        time.sleep(3)
         text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
         self.assertIn(u'厂商',text1)
         self.add_img()
