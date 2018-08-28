@@ -99,7 +99,7 @@ class OtherTest(unittest.TestCase):
         self.driver.find_element_by_id('overlayArea').send_keys('10')#几个区域
         self.driver.find_element_by_id('solutionIntegration').send_keys('100')#方案集成
         self.driver.find_element_by_id('marketShare').send_keys(u'测试测试测试')#市场份额
-        self.driver.find_element_by_id('targetMarket').send_keys('99')#目标市场
+        self.driver.find_element_by_id('targetMarket').send_keys(u'99人-100人')#目标市场
         self.driver.find_element_by_xpath('//*[@id="varChannelStrategy"]/label[1]/span[1]/input').click()#VAR
         self.driver.find_element_by_xpath('//*[@id="mspChannelStrategy"]/label[1]/span[1]/input').click()#MSP
         self.driver.find_element_by_xpath('//*[@id="providerChannelStrategy"]/label[1]/span[1]/input').click()#通讯
