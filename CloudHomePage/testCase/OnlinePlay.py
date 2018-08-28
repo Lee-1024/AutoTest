@@ -14,7 +14,7 @@ class OlinePlay(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         options = webdriver.ChromeOptions()
-        options.binary_location = "C:\\Users\\amallayev\\AppData\\Local\\Google\Chrome\\Application\\chrome.exe"
+        options.binary_location = "C:\\Users\\amallayev\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
         chrome_driver_binary = "C:\\Python27\\chromedriver.exe"
         cls.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
 
