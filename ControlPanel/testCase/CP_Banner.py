@@ -38,7 +38,7 @@ class Banner(unittest.TestCase):
         self.driver.maximize_window()
 
 
-    def test_blog_banner(self):
+    def test_homepage_banner(self):
         u"""首页banner"""
         self.setup_get()
 
