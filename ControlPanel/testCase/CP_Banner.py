@@ -52,6 +52,35 @@ class Banner(unittest.TestCase):
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('www.baidu.com')
 
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(3)
+
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\Users\\Bill\\Desktop\\插图\\dota2.jpg')
+
+        time.sleep(1)
+        self.driver.find_element_by_xpath('//div[@class="dialog-main"]/header/div/button[2]/span[1]').click()
+
+        self.driver.get('https://stg.hnacloudmarket.com/')
+        time.sleep(3)
+        self.driver.find_element_by_class_name('apsClose').click()
+        self.driver.find_element_by_xpath('//div[@class="ant-carousel"]/div/ul/li[1]/button').click()
+
+        self.add_img()
+
+        time.sleep(5)
+
+    def test_blog_banner(self):
+        self.setup_get()
+
+        self.driver.find_element_by_xpath('//div[@class="side-list-root"]/nav/div[3]').click()
+        time.sleep(0.5)
+        self.driver.find_element_by_xpath('//div[@class="side-list-root"]/nav/div[4]/div/div/div/div[2]/div/span').click()
+
+        self.driver.find_element_by_xpath('//div[@class="root-main-view"]/div/div[2]/div/button/span[1]').click()
+
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[1]/div[1]/div/div/input').send_keys(u'测试')
+
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('www.baidu.com')
+
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(1)
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\Users\\Bill\\Desktop\\插图\\dota2.jpg')
@@ -60,6 +89,7 @@ class Banner(unittest.TestCase):
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/header/div/button[2]/span[1]').click()
 
         time.sleep(10)
+
 
 if __name__ == "__main__":
     unittest.main()
