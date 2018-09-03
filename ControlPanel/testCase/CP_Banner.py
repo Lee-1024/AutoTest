@@ -54,7 +54,7 @@ class Banner(unittest.TestCase):
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(3)
 
-        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\Users\\Bill\\Desktop\\插图\\dota2.jpg')
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\AutoTest_tools\\dota2.jpg')
 
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/header/div/button[2]/span[1]').click()
@@ -83,7 +83,7 @@ class Banner(unittest.TestCase):
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(1)
 
-        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\Users\\Bill\\Desktop\\插图\\dota2.jpg')
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[4]/input').send_keys(u'C:\\AutoTest_tools\\dota2.jpg')
 
         time.sleep(1)
         self.driver.find_element_by_xpath('//div[@class="dialog-main"]/header/div/button[2]/span[1]').click()
