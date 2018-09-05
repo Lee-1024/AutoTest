@@ -44,18 +44,27 @@ class Product(unittest.TestCase):
             self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[3]/div/div/div[%d]'%(ele1+1,i)).click()
             time.sleep(1)
             self.add_img()
-            if self.comme.isElementExist('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div',self.driver):
-                text1 = self.driver.find_element_by_xpath('//div[@class="main-div"]/div[1]/div/div/div[1]/div[1]/div[1]/div/div').text
+            if self.comme.isElementExist('//div[@class="company-read-info-content-content-title"]/div/div',self.driver):
+                text1 = self.driver.find_element_by_xpath('//div[@class="company-read-info-content-content-title"]/div/div').text
                 self.assertIn(check_list[i-1],text1)
                 self.log.info(u'厂商检查')
-            elif self.comme.isElementExist('//div[@class="product-item-title"]/span',self.driver):
+            else:
+                self.log.info(u'厂商XPATH不存在')
+
+            if self.comme.isElementExist('//div[@class="product-item-title"]/span',self.driver):
                 text2 = self.driver.find_element_by_xpath('//div[@class="product-item-title"]/span').text
                 self.assertIn(check_list[i-1],text2)
                 self.log.info(u'产品检查')
-            elif self.comme.isElementExist('//div[@class="serviceMain"]/h5',self.driver):
+            else:
+                self.log.info(u'产品XPATH不存在')
+
+            if self.comme.isElementExist('//div[@class="serviceMain"]/h5',self.driver):
                 text3 = self.driver.find_element_by_xpath('//div[@class="serviceMain"]/h5').text
                 self.assertIn(check_list[i-1],text3)
                 self.log.info(u'服务检查')
+            else:
+                self.log.info(u'服务XPATH不存在')
+
             self.driver.back()
             self.driver.find_element_by_xpath('//div[@class="main-div-container-hompage"]/div[4]/div/div/div[%d]/div[1]/div[%d]/div'%(ele1+1,ele2)).click()
             time.sleep(2)
