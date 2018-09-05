@@ -53,7 +53,7 @@ class Banner(unittest.TestCase):
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[1]/div[1]/div/div/input').send_keys(u'测试')
 
-        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('www.baidu.com')
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('https://www.baidu.com/')
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(3)
 
@@ -82,7 +82,7 @@ class Banner(unittest.TestCase):
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[1]/div[1]/div/div/input').send_keys(u'测试')
 
-        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('www.baidu.com')
+        self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[1]/div/div/input').send_keys('https://www.baidu.com/')
 
         self.driver.find_element_by_xpath('//div[@class="dialog-main-container"]/div[2]/div[2]/div/div/input').send_keys(1)
 
