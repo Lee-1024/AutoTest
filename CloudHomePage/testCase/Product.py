@@ -77,7 +77,7 @@ class Product(unittest.TestCase):
         self.driver.get(self.comme.url)
         self.driver.maximize_window()
         self.driver.find_element_by_class_name('apsClose').click()
-        self.comme.login(self.driver,'15044495530','l12345')
+        self.comme.login(self.driver,'150xxxx5530','l12345')
         time.sleep(0.5)
         #IaaS
         checks=(u'阿里',u'腾讯',u'华为',u'京东',u'金山',u'华云')
