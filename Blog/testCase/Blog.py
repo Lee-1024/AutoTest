@@ -40,7 +40,7 @@ class PublishBlog(unittest.TestCase):
         time.sleep(1)
         #login
         login = LogiAndExit()
-        login.login(self.driver,'15044495530','l12345')
+        login.login(self.driver,'150xxxx5530','l12345')
 
         time.sleep(6)
         text = self.driver.find_element_by_xpath('//div[@class="titleUserBtn clickable "]').text
