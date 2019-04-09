@@ -42,7 +42,7 @@ class PersonalCenter(unittest.TestCase):
         self.driver.find_element_by_class_name('apsClose').click()
         #login
         login = LogiAndExit()
-        login.login(self.driver,'17600591024','l123456')
+        login.login(self.driver,'176xxxx1024','l123456')
         time.sleep(3)
         firsrn = self.driver.find_element_by_xpath('//div[@class="titleUserBtn clickable "]').text
         self.assertIn('HNA',firsrn)
